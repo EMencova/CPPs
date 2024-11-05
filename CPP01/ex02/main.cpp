@@ -5,18 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/07 15:31:24 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/05 12:19:33 by emencova         ###   ########.fr       */
+/*   Created: 2024/11/05 12:42:45 by emencova          #+#    #+#             */
+/*   Updated: 2024/11/05 13:13:07 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
 
-int main(void)
+
+int main()
 {
-	Zombie *horde = zombieHorde(4, "Brainy");
-	Zombie *blabla = zombieHorde(5, "BLABLA");
-	delete []horde;
-	delete []blabla;
-	return (0);
+    std::string str = "HI THIS IS BRAIN.";
+    std::string *stringPTR = &str;
+    std::string &stringREF = str;
+    
+    std::cout <<&str<< std::endl;
+    std::cout <<&stringPTR<< std::endl;
+    std::cout <<&stringREF<< std::endl;
+    
+    std::cout <<str<< std::endl;
+    std::cout <<*stringPTR<< std::endl;
+    std::cout <<stringREF<< std::endl;
+     
 }

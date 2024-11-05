@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/07 15:31:24 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/05 12:19:33 by emencova         ###   ########.fr       */
+/*   Created: 2024/11/05 13:16:30 by emencova          #+#    #+#             */
+/*   Updated: 2024/11/05 13:49:37 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-
-int main(void)
+void Weapon::getType(std::string wtype)
 {
-	Zombie *horde = zombieHorde(4, "Brainy");
-	Zombie *blabla = zombieHorde(5, "BLABLA");
-	delete []horde;
-	delete []blabla;
-	return (0);
+    Weapon.type = wtype;
+    std::cout<< wtype << std::endl;
+    
+}
+
+void Weapon::getType(string wtype)
+{
+    wtype = Weapon.type;  
 }
