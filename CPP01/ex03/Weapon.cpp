@@ -3,21 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:16:30 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/05 13:49:37 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/05 19:19:40 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void Weapon::getType(std::string wtype)
+#include "Weapon.hpp"
+
+Weapon::Weapon(std::string new_type)
 {
-    Weapon.type = wtype;
-    std::cout<< wtype << std::endl;
-    
+    type = new_type;
 }
 
-void Weapon::getType(string wtype)
+std::string &Weapon::getType()
 {
-    wtype = Weapon.type;  
+   return (this->type);
+}
+
+void Weapon::setType(std::string wtype)
+{
+    this->type = wtype;
 }

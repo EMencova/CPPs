@@ -3,21 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:16:01 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/05 15:09:01 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/05 19:19:50 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
+# include <iostream>
 
 class Weapon
 {
     private:
         std::string type;
     public:
-        std::string	getType(std::string wtype);
-		void	setType(string type);
+        Weapon(std::string new_type);
+        std::string	&getType();
+		void	setType(std::string type);
     
 };
+
+#endif

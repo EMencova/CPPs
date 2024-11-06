@@ -6,22 +6,19 @@
 #    By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/07 15:32:46 by emencova          #+#    #+#              #
-#    Updated: 2024/11/05 20:37:29 by eliskam          ###   ########.fr        #
+#    Updated: 2024/11/06 19:35:24 by eliskam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fight
+NAME = harlFilter
 
 CC = c++
 
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC = main.cpp \
-		Weapon.cpp \
-		HumanA.cpp \
-		HumanB.cpp \
+		Harl.cpp \
 		
-
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
