@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:18:36 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/05 20:20:07 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/08 16:09:27 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ class HumanB
 
     public:
         HumanB(std::string new_name);
+        ~HumanB();
         void attack();
-        void setWeapon(Weapon &new_weapon);
+        void setWeapon(Weapon *new_weapon);
 };
 
 

@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:16:01 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/07 12:16:06 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:41:47 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main (int ac, char **av)
 {
-    if (ac != 4 || !av[1][0] || !av[2][0] || !av[3][0])
+    if (ac != 4 || !av[1][0] || !av[2][0] || !av[3][0]) //Accept maybe empty string? Also changed to empty()
     {
         std::cout << "Provide correct arguments!"<< std::endl;
         return (1);

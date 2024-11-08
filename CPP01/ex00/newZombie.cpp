@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 14:00:24 by emencova          #+#    #+#             */
-/*   Updated: 2024/09/07 15:23:41 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/07 12:38:04 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ Zombie* newZombie(std::string name)
 {
     Zombie* newZombie = new Zombie(name);
     newZombie->announce(); 
-    return newZombie;
+    return (newZombie);
 }

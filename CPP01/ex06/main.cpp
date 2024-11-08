@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:16:37 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/07 12:16:40 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/08 18:00:56 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,10 @@ int main (int ac, char **av)
     {
         case 1:
             harl.complain("DEBUG");
-            harl.complain("INFO");
-            harl.complain("WARNING");
-            harl.complain("ERROR");
-            break;
         case 2:
             harl.complain("INFO");
-            harl.complain("WARNING");
-            harl.complain("ERROR");
-            break;
         case 3:
             harl.complain("WARNING");
-            harl.complain("ERROR");
-            break;
         case 4:
             harl.complain("ERROR");
             break;
