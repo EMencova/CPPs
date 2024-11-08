@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:16:30 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/08 15:36:51 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/08 19:24:55 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Weapon::~Weapon()
     
 }
 
-std::string &Weapon::getType()
+const std::string &Weapon::getType()
 {
    return (this->type);
 }

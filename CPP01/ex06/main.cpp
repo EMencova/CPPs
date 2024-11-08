@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:16:37 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/08 18:00:56 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/08 20:24:22 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ int main (int ac, char **av)
 
     std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
     for (int i = 0; i < 4; i++)
+    {
         if (av[1] == levels[i])
         {
             level = i;
             break;
         }
-
+    }  
     switch (level + 1)
     {
         case 1:

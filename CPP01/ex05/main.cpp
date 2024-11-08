@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:16:20 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/07 12:16:23 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/08 20:25:43 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int main (int ac, char **av)
         std::cout << "Wrong amount of arguments, need two." << std::endl;
         return(1);
     }
-
     Harl harl;
     harl.complain(av[1]);
     return (0);

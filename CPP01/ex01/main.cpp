@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 15:31:24 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/05 12:19:33 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/08 19:22:53 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,14 @@
 
 int main(void)
 {
-	Zombie *horde = zombieHorde(4, "Brainy");
-	Zombie *blabla = zombieHorde(5, "BLABLA");
+	int N = 4;
+	int L = 5;
+	Zombie *horde = zombieHorde(N, "Brainy");
+	Zombie *blabla = zombieHorde(L, "BLABLA");
+	for (int i = 0; i < N; ++i)
+        horde[i].announce();
+	for (int i = 0; i < L; ++i)
+        blabla[i].announce();
 	delete []horde;
 	delete []blabla;
 	return (0);

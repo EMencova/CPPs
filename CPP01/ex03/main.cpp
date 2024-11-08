@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:15:36 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/08 17:32:39 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/08 20:18:03 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ int	main()
 	{
 		Weapon fight = Weapon("crude spiked club.");
 		Weapon	fight2 = Weapon("sword.");
-		HumanB Luke("Luke ");
+		HumanB Luke("Luke");
 		Luke.setWeapon(&fight);
 		Luke.attack();
 		fight.setType("revolver.");
 		Luke.attack();
-		Luke.setWeapon(&fight2); //ADDED
-		Luke.attack(); //ADDED
+		Luke.setWeapon(&fight2);
+		Luke.attack();
 	}
 	{
 		Weapon fight = Weapon("ax.");
-		HumanB ted("Ted ");
+		HumanB ted("Ted");
 		ted.setWeapon(NULL);
 		ted.attack();
 		fight.setType("ax.");
