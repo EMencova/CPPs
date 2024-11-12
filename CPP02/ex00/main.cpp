@@ -3,27 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:17:17 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/11 17:29:30 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/12 09:21:05 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 int main(void)
-{
-    Fixed   f;
-
-    Fixed   f2(f);
+{ 
+	Fixed a;
+	Fixed b(a);
+	Fixed c;
+	c = b;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
     
-    f = f2;
-
-    Item    i1;
-    Item    i2;
-
-    i1.value > i2.;
-
-    
+	return (0);  
 }
