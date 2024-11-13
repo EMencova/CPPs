@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 14:55:32 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/13 15:38:11 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/13 23:35:27 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ Fixed Fixed::operator--(int del)
 {
     (void)del;
     Fixed temp(*this);
-    ++(*this);
+    operator--();
     return (temp);    
 }
 
@@ -163,7 +163,7 @@ Fixed Fixed::operator++(int del)
 {
     (void)del;
     Fixed temp(*this);
-   ++(*this);
+    operator++();
     return (temp);   
 }
 
