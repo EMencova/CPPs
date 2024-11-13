@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 14:55:32 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/13 23:35:27 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/13 23:40:03 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ Fixed Fixed::operator++(int del)
 {
     (void)del;
     Fixed temp(*this);
-    operator++();
+    ++(*this);
     return (temp);   
 }
 
