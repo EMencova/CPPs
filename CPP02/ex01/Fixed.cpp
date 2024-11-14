@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 14:55:32 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/13 14:51:34 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/14 11:27:01 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Fixed::Fixed(const float raw)
 {
     //std::cout<< "FLOAT constructor has been called."<<std::endl;
     _raw = roundf(raw * (float)(1 << Fixed::_bits));
-    std::cout<< _raw <<std::endl;
+    //std::cout<< _raw <<std::endl;
 }
 
 Fixed::Fixed(const Fixed& original)
