@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 13:57:28 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/15 16:29:37 by eliskam          ###   ########.fr       */
+/*   Created: 2024/11/14 12:01:33 by emencova          #+#    #+#             */
+/*   Updated: 2024/11/15 21:14:34 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
-# include "ClapTrap.hpp"
+# include "FragTrap.hpp"
+# include "ScavTrap.hpp"
 
-class ScavTrap : public ClapTrap
+class DiamondTrap : public ScavTrap, public FragTrap
 {
-    private: 
-       // ScavTrap();
-        
-    public:
-        ScavTrap();
-        ScavTrap(std::string name);
-        ScavTrap(const ScavTrap &original);
-        ScavTrap &operator=(ScavTrap const &original);
-        virtual ~ScavTrap();
-    
-        void guardGate() const;
-        void attack(const std::string& target);
-};
+    private:
+        std::string _name;
 
+    public:
+        DiamondTrap();
+        DiamondTrap(std::string name);
+        DiamondTrap(const DiamondTrap &original);
+        DiamondTrap &operator=(const DiamondTrap &original);
+        ~DiamondTrap();
+
+        void	whoAmI() const;
+        
+};
 
 #endif

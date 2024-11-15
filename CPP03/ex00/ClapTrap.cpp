@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:01:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/15 13:27:23 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/15 19:36:17 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ void ClapTrap::takeDamage(unsigned int amount)
         std::cout<<_name<< " cannot take damage."<<std::endl;
     else if(amount > _hit_points)
     {
-        std::cout<<_name<< " died with "<<_hit_points<<"."<<std::endl;
         _hit_points = 0;
+        std::cout<<_name<< " died with "<<_hit_points<<"."<<std::endl;
     }
     else 
     {

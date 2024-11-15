@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:01:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/15 21:01:52 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/15 20:59:41 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ClapTrap::ClapTrap()
 {
-    std::cout<< "ClapTrap constructor has been called."<<std::endl;
+    std::cout<< "ClapTrap "<<_name<<" constructor has been called."<<std::endl;
     _name = "default";
     _energy_points = 10;
     _hit_points = 10;
@@ -25,7 +25,7 @@ ClapTrap::ClapTrap()
 ClapTrap::ClapTrap(std::string name)
 {
     _name = name;
-    std::cout<< "ClapTrap " <<_name<<" created."<<std::endl;
+    std::cout<< "ClapTrap "<<_name<<" created."<<std::endl;
     _energy_points = 10;
     _hit_points = 10;
     _attack_damage = 0;  
@@ -34,14 +34,14 @@ ClapTrap::ClapTrap(std::string name)
 
 ClapTrap::ClapTrap(const ClapTrap &original)
 {
-    std::cout<< "ClapTrap Copy constructor has been called."<< std::endl;
+    std::cout<< "ClapTrap "<<_name<<" Copy constructor has been called."<< std::endl;
     *this = original;
 }
 
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &original)
 {
-    std::cout<<"ClapTrap copy assignment constructor has been called."<<std::endl;
+    std::cout<<"ClapTrap" <<_name<<" copy assignment constructor has been called."<<std::endl;
     if (this != &original)
     {
         _name = original._name;

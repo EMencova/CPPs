@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:57:11 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/15 21:01:28 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/15 20:49:14 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
-    std::cout<<"ScavTrap default constructor called!"<<std::endl; 
+    std::cout<<"ScavTrap"<<_name<<" default constructor called!"<<std::endl; 
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-    _name = name;
     std::cout<< "ScavTrap "<<_name<<" created."<<std::endl;
+    _name = name;
     _energy_points = 50;
     _hit_points = 100;
     _attack_damage = 20;  
@@ -28,14 +28,14 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 
 ScavTrap::ScavTrap(const ScavTrap &original) : ClapTrap()
 {
-    std::cout<< "ScavTrap copy constructor has been called."<< std::endl;
+    std::cout<< "ScavTrap "<<_name<<" copy constructor has been called."<< std::endl;
     *this = original;
 }
 
 
 ScavTrap &ScavTrap::operator=(ScavTrap const &original)
 {
-    std::cout<<"ScavTrap copy assignment constructor has been called."<<std::endl;
+    std::cout<<"ScavTrap "<<_name<<" copy assignment constructor has been called."<<std::endl;
     if (this != &original)
     {
         _name = original._name;
@@ -48,7 +48,7 @@ ScavTrap &ScavTrap::operator=(ScavTrap const &original)
 
 ScavTrap::~ScavTrap()
 {
-    std::cout<<"ScavTrap"<<_name<<" destructor called!"<<std::endl; 
+    std::cout<<"ScavTrap "<<_name<<" destructor called!"<<std::endl; 
 }
 
 void ScavTrap::attack(const std::string& target)

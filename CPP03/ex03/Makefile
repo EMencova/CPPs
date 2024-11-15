@@ -6,11 +6,11 @@
 #    By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/07 15:32:46 by emencova          #+#    #+#              #
-#    Updated: 2024/11/15 16:43:41 by eliskam          ###   ########.fr        #
+#    Updated: 2024/11/15 21:06:00 by eliskam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ScavTrap
+NAME = FragTrap
 
 CC = c++
 
@@ -19,6 +19,8 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 SRC = main.cpp \
 	ClapTrap.cpp \
 	ScavTrap.cpp \
+	FragTrap.cpp \
+	DiamondTrap.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
