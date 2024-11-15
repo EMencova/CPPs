@@ -6,11 +6,11 @@
 #    By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/07 15:32:46 by emencova          #+#    #+#              #
-#    Updated: 2024/11/15 21:06:00 by eliskam          ###   ########.fr        #
+#    Updated: 2024/11/15 23:06:38 by eliskam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = FragTrap
+NAME = DiamondTrap
 
 CC = c++
 

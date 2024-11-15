@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:01:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/15 20:59:41 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/15 23:26:09 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ ClapTrap::ClapTrap()
 ClapTrap::ClapTrap(std::string name)
 {
     _name = name;
-    std::cout<< "ClapTrap "<<_name<<" created."<<std::endl;
     _energy_points = 10;
     _hit_points = 10;
-    _attack_damage = 0;  
+    _attack_damage = 0;
+    std::cout<< "ClapTrap "<<_name<<" created."<<std::endl; 
 }
 
 
@@ -106,8 +106,9 @@ void ClapTrap::takeDamage(unsigned int amount)
         std::cout<<"ClapTrap "<<_name<<" takes a damage of "<<amount<<" points."<<std::endl;
         
     }
-   // std::cout<<"hit points are "<< _hit_points<<std::endl;
+    std::cout<<"hit points are "<< _hit_points<<std::endl;
 }
+
 
 void ClapTrap::beRepaired(unsigned int amount)
 {

@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:57:11 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/15 20:50:52 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/15 22:48:56 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 # define FRAGTRAP_HPP
 
 # include "ClapTrap.hpp"
-//# include "ScavTrap.hpp"
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
     public:
         FragTrap();

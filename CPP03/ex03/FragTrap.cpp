@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:57:11 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/15 20:47:51 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/15 23:08:49 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ FragTrap::FragTrap() : ClapTrap()
 
 FragTrap::FragTrap(std::string name): ClapTrap(name)
 {
-    std::cout<< "FragTrap "<<_name<<" created."<<std::endl;
     _name = name;
     _energy_points = 100;
     _hit_points = 100;
     _attack_damage = 30;
+    std::cout<< "FragTrap "<<_name<<" created."<<std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &original) : ClapTrap()

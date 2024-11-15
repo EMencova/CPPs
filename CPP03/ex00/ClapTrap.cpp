@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:01:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/15 19:36:17 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/15 23:12:53 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(std::string name)
 {
-    std::cout<< "ClapTrap created."<<std::endl;
     _name = name;
     _energy_points = 10;
     _hit_points = 10;
-    _attack_damage = 0;  
+    _attack_damage = 0;
+    std::cout<< "ClapTrap"<<_name<<" created."<<std::endl;  
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:01:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/15 20:59:41 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/15 23:11:20 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 ClapTrap::ClapTrap()
 {
-    std::cout<< "ClapTrap "<<_name<<" constructor has been called."<<std::endl;
     _name = "default";
     _energy_points = 10;
     _hit_points = 10;
     _attack_damage = 0;
+    std::cout<< "ClapTrap "<<_name<<" constructor has been called."<<std::endl;
 }
 
 
 ClapTrap::ClapTrap(std::string name)
 {
     _name = name;
-    std::cout<< "ClapTrap "<<_name<<" created."<<std::endl;
     _energy_points = 10;
     _hit_points = 10;
-    _attack_damage = 0;  
+    _attack_damage = 0;
+    std::cout<< "ClapTrap "<<_name<<" created."<<std::endl; 
 }
 
 
@@ -41,7 +41,6 @@ ClapTrap::ClapTrap(const ClapTrap &original)
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &original)
 {
-    std::cout<<"ClapTrap" <<_name<<" copy assignment constructor has been called."<<std::endl;
     if (this != &original)
     {
         _name = original._name;
@@ -49,6 +48,7 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &original)
 		_energy_points = original._energy_points;
 		_attack_damage = original._attack_damage;
     }
+    std::cout<<"ClapTrap" <<_name<<" copy assignment constructor has been called."<<std::endl;
     return (*this);
     
 }

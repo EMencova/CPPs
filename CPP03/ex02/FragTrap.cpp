@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:57:11 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/15 20:47:51 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/15 23:10:30 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ FragTrap::FragTrap() : ClapTrap()
 
 FragTrap::FragTrap(std::string name): ClapTrap(name)
 {
-    std::cout<< "FragTrap "<<_name<<" created."<<std::endl;
     _name = name;
     _energy_points = 100;
     _hit_points = 100;
     _attack_damage = 30;
+    std::cout<< "FragTrap "<<_name<<" created."<<std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &original) : ClapTrap()
@@ -34,7 +34,6 @@ FragTrap::FragTrap(const FragTrap &original) : ClapTrap()
 
 FragTrap &FragTrap::operator=(const FragTrap &original)
 {
-    std::cout<<"FragTrap "<<_name<<" copy assignment has been called!"<<std::endl;
     if (this != &original)
     {
         _name = original._name;
@@ -42,6 +41,7 @@ FragTrap &FragTrap::operator=(const FragTrap &original)
         _hit_points = original._hit_points;
         _attack_damage = original._attack_damage;
     }
+    std::cout<<"FragTrap "<<_name<<" copy assignment has been called!"<<std::endl;
     return (*this);   
 }
 
