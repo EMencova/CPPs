@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:00:43 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/15 23:15:06 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/16 12:59:42 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ int	main(void)
     DiamondTrap diam("diam");
     FragTrap frag("frag");
     ScavTrap scav("scav");
-    
+
 	clap.attack("diam");
-	diam.takeDamage(diam.GetAttackDamage());
+	diam.takeDamage(clap.GetAttackDamage());
 	diam.beRepaired(80);
     diam.attack("frag");
-    frag.takeDamage(frag.GetAttackDamage());
+    frag.takeDamage(diam.GetAttackDamage());
     frag.beRepaired(20);
     frag.attack("scav");
-	scav.takeDamage(clap.GetAttackDamage());
+	scav.takeDamage(frag.GetAttackDamage());
     scav.beRepaired(10);
     scav.attack("clap");
-    clap.takeDamage(clap.GetAttackDamage());
+    clap.takeDamage(scav.GetAttackDamage());
     frag.attack("diam");
-    diam.takeDamage(diam.GetAttackDamage());
+    diam.takeDamage(frag.GetAttackDamage());
     diam.beRepaired(20);
     diam.whoAmI();
     frag.highFivesGuys();

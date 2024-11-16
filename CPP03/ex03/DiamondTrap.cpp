@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:01:33 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/15 23:29:22 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/16 14:48:27 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 DiamondTrap::DiamondTrap() : FragTrap(), ScavTrap()
 {
     std::cout<<"DiamondTrap constructor called."<<std::endl;
+    
 }
 
-DiamondTrap::DiamondTrap(std::string name) : FragTrap(name), ScavTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap() ,FragTrap(), ScavTrap()
 {
-    _name = ClapTrap::_name;
-    _hit_points = FragTrap::_hit_points;
-    _energy_points = ScavTrap::_energy_points;
-    _attack_damage = FragTrap::_attack_damage;
+    FragTrap frag(name);
+    
+    _name = name;
+    _attack_damage = frag.GetAttackDamage();
+    _hit_points = frag.GetHitPoints(); 
     std::cout<<"DiamondTrap "<<_name<<" constructor called."<<std::endl;
 }
 
@@ -59,5 +61,5 @@ void DiamondTrap::attack(const std::string &target)
 
 void DiamondTrap::whoAmI() const
 {
-    std::cout<<"I am DiamondTrap "<<_name<<" and I come from ClapTrap named-"<< ClapTrap::_name<<std::endl;
+    std::cout<<"I am DiamondTrap "<<_name<<" and I come from ClapTrap named - "<< ClapTrap::_name<<std::endl;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:01:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/15 23:26:09 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/16 15:10:54 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,28 +85,28 @@ void ClapTrap::attack(const std::string& target)
         std::cout<<_name<<" cannot attack."<<std::endl;
     else
     {  
-        std::cout<<"ClapTrap "<<_name<<" attacks "<<target<<" causing "<<_hit_points<<" points of damage."<< std::endl;
+        std::cout<<"ClapTrap "<<_name<<" attacks "<<target<<" causing "<<_attack_damage<<" points of damage."<< std::endl;
         _energy_points--;
     }
-   // std::cout<<"energy points are "<< GetEnergyPoints()<<std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
     if (!this->_hit_points)
+    {
         std::cout<<_name<< " cannot take damage."<<std::endl;
-    else if(amount > _hit_points)
+    }
+    else if(amount >= _hit_points)
     {
         _hit_points = 0;
         std::cout<<_name<< " died with "<<_hit_points<<"."<<std::endl;
     }
     else 
     {
-        _hit_points -= amount;
         std::cout<<"ClapTrap "<<_name<<" takes a damage of "<<amount<<" points."<<std::endl;
+        _hit_points -= amount;
         
     }
-    std::cout<<"hit points are "<< _hit_points<<std::endl;
 }
 
 
@@ -120,6 +120,5 @@ void ClapTrap::beRepaired(unsigned int amount)
         _hit_points += amount;
         std::cout<<"ClapTrap "<<_name<<" repaired itself to "<<_hit_points<<"."<<std::endl;
     }
-   // std::cout<<"energy points are "<< GetEnergyPoints()<<std::endl;
 }
 

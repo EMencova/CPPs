@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:00:43 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/15 21:13:43 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/16 15:06:26 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@ int	main(void)
     FragTrap frag("hihi1");
     
 	clap.attack("hihi1");
-	frag.takeDamage(frag.GetAttackDamage());
+	frag.takeDamage(clap.GetAttackDamage());
 	frag.beRepaired(80);
     clap_2->attack("blabla1");
     frag.highFivesGuys();
-    clap.takeDamage(clap.GetAttackDamage());
+    clap.takeDamage(frag.GetAttackDamage());
     clap.beRepaired(20);
     frag.attack("bleble2");
-	clap_2->takeDamage(clap.GetAttackDamage());
+	clap_2->takeDamage(frag.GetAttackDamage());
     clap_2->beRepaired(10);
     clap_2->attack("blabla1");
     clap.takeDamage(clap_2->GetAttackDamage());
     frag.attack("blabla1");
     frag.highFivesGuys();
-    clap.takeDamage(clap.GetAttackDamage());
+    clap.takeDamage(frag.GetAttackDamage());
     clap.beRepaired(20);;
     delete clap_2;
 	return (0);
