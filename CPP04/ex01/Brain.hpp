@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 16:57:42 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/17 18:51:49 by eliskam          ###   ########.fr       */
+/*   Created: 2024/11/16 16:55:12 by emencova          #+#    #+#             */
+/*   Updated: 2024/11/17 21:44:46 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
 # include "Animal.hpp"
 
-class Cat : virtual public Animal
+class Brain
 {
-    public:
-        Cat();
-        Cat(const Cat &original);
-        Cat &operator=(const Cat &original);
-        virtual ~Cat();
+    private:
+        std::string ideas[100];
 
-        void makeSound() const;
+    public:
+        Brain();
+        Brain(const Brain &original);
+        Brain &operator=(const Brain &original);
+        ~Brain();
 };
 
 

@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:06:56 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/17 21:19:29 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/17 21:27:40 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
     Cat::Cat() : Animal()
     {
         std::cout<<"Cat default constructor called."<<std::endl;
+        _brain = new Brain;
+        type = "Cat";
     }
 
     
@@ -30,6 +32,7 @@
         if (this != &original)
         {
             type = original.type;
+            _brain = new Brain(*original._brain);
         }
         
         return (*this);
@@ -38,6 +41,7 @@
     Cat::~Cat()
     {
         std::cout<<"Cat destructor called."<<std::endl;
+        delete _brain;
     }
 
     void Cat::makeSound() const

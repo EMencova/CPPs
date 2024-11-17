@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:55:12 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/17 20:03:45 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/17 21:44:43 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#include "Brain.hpp"
 
-# include <iostream>
-# include <string>
-
-class Animal
+Brain::Brain()
 {
-    protected:
-        std::string type;
+    std::cout<<"Brain default constructor called."<<std::endl;
+}
 
-    public:
-        Animal();
-        Animal(const Animal &original);
-        Animal &operator=(const Animal &original);
-        virtual ~Animal();
+Brain::Brain(const Brain &original)
+{
+    *this = original;
+    std::cout<<"Brain copy constructor called."<<std::endl;
+}
 
-        std::string getType() const;
-        virtual void makeSound() const;
-            
-};
+Brain &Brain::operator=(const Brain &original)
+{
+    std::cout<<"Brain copy assignment constructor called."<<std::endl;
+    if (this != &original)
+    {
+        for (size_t i = 0; i < 100; i++)
+            ideas[i] = original.ideas[i];      
+    }
+    return (*this);
+}
 
-#endif
+Brain::~Brain()
+{
+    std::cout<<"Brain destructor called."<<std::endl;
+}
+

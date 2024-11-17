@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:55:12 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/17 19:47:20 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/17 21:41:59 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,22 @@
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongCat.hpp"
+
 
 int main()
 {
+
+	const Animal* dog = new Dog();
+    const Animal* cat = new Cat();
+
+    delete dog;
+    delete cat;
+
+    const Animal* animals[4] = { new Dog(), new Dog(),new Cat(), new Cat()};
+    for ( int i = 0; i < 4; i++ ) {
+        delete animals[i];
+    }
+	/*
 	const Animal* ani = new Animal();
 	const Animal* anidog = new Dog();
 	const Animal* anicat = new Cat();
@@ -37,5 +49,5 @@ int main()
 	delete anidog;
 	delete anicat;
     delete wani;
-	delete wcat;
+	delete wcat;*/
 }

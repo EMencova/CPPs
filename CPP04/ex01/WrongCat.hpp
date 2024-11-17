@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 16:57:42 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/17 18:51:49 by eliskam          ###   ########.fr       */
+/*   Created: 2024/11/16 16:55:12 by emencova          #+#    #+#             */
+/*   Updated: 2024/11/17 20:03:08 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-# include "Animal.hpp"
+# include "WrongAnimal.hpp"
 
-class Cat : virtual public Animal
+class WrongCat : public WrongAnimal
 {
     public:
-        Cat();
-        Cat(const Cat &original);
-        Cat &operator=(const Cat &original);
-        virtual ~Cat();
+        WrongCat();
+        WrongCat(const WrongCat &original);
+        WrongCat &operator=(const WrongCat &original);
+        virtual ~WrongCat();
 
         void makeSound() const;
 };

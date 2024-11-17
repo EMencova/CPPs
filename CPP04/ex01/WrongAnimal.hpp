@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 16:57:42 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/17 18:51:49 by eliskam          ###   ########.fr       */
+/*   Created: 2024/11/16 16:55:12 by emencova          #+#    #+#             */
+/*   Updated: 2024/11/17 20:15:24 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
 # include "Animal.hpp"
 
-class Cat : virtual public Animal
+class WrongAnimal
 {
-    public:
-        Cat();
-        Cat(const Cat &original);
-        Cat &operator=(const Cat &original);
-        virtual ~Cat();
+    protected:
+        std::string type;
 
-        void makeSound() const;
+    public:
+        WrongAnimal();
+        WrongAnimal(const WrongAnimal &original);
+        WrongAnimal &operator=(const WrongAnimal &original);
+        virtual ~WrongAnimal();
+        
+        std::string getType() const;
+        void makeSound() const; // if set to virtual then wrong cat sound would override
 };
 
 
