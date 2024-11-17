@@ -6,7 +6,7 @@
 #    By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/07 15:32:46 by emencova          #+#    #+#              #
-#    Updated: 2024/11/17 20:17:32 by eliskam          ###   ########.fr        #
+#    Updated: 2024/11/17 21:51:56 by eliskam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ SRC = main.cpp \
 	WrongCat.cpp \
 	WrongAnimal.cpp \
 	Brain.cpp \
-	Brain.hpp \
 
 OBJ = $(SRC:.cpp=.o)
 
