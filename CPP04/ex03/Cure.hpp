@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:28:21 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/18 13:45:48 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:10:07 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ class Cure : public virtual AMateira
         ~Cure();
 
         void setType();
+        Cure* clone() const;
+        std::string const &getName() const;
     
     
 };

@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:55:13 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/18 13:49:37 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/18 15:23:25 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class AMateira
         virtual AMateira* clone() const = 0;
         std::string const &getType() const;
         virtual void use(ICharater &target);
+        virtual void setType() = 0;
           
 };
 
