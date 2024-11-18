@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:11:38 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/18 20:52:02 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/18 22:08:31 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ class Character : public ICharacter
         void unequip(int idx);
         void use(int idx, ICharacter& target);
         std::string const &getName() const;
-        
-        
+      
 };
 
 #endif

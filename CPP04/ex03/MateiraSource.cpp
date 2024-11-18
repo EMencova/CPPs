@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:13:57 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/18 21:59:40 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/18 22:12:12 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ MateriaSource::~MateriaSource()
 {
     std::cout<<"MateriaSource destructor called."std::endl;
     for (int i = 0; i < 4; i++)
-        delete inv[i];  
+    {
+        if (inv[i])
+            delete inv[i]; 
+    } 
 }
 
 void		MateriaSourse::learnMateria(AMateria* amat)
