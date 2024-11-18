@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMateiraSource.hpp                                 :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:13:54 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/18 13:16:59 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/18 20:51:40 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMATEIRASOURCE_HPP
 # define IMATEIRASOURCE_HPP
 
-class IMateiraSource
+# include "AMateria.hpp"
+
+class IMateriaSource
 {
     public:
-        virtual ~IMateiraSource();
-        virtual void learnMateira(AMateira*) = 0;
-        virtuak AMateira* createMateira(std::string const &type) = 0;
+        virtual ~IMateriaSource();
+        virtual void learnMateria(AMateria*) = 0;
+        virtual AMateria* createMateria(std::string const &type) = 0;
 };
 
 #endif

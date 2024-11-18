@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: emencova <emencova@student.42.fr>          +#+  +:+       +#+         #
+#    By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/07 15:32:46 by emencova          #+#    #+#              #
-#    Updated: 2024/11/18 12:54:08 by emencova         ###   ########.fr        #
+#    Updated: 2024/11/18 22:01:30 by eliskam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,11 @@ CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC = main.cpp \
-	AMateira.c \
+	AMateria.cpp \
+	Cure.cpp \
+	Ice.cpp \
+	ICharacter.cpp \
+	MateiraSource.cpp
 	
 
 OBJ = $(SRC:.cpp=.o)

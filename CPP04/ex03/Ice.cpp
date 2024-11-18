@@ -3,56 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:25:52 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/18 16:11:08 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/18 21:46:53 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#include "./incl/Ice.hpp"
 
- Ice() : AMateira()
- {}
+ Ice::Ice() : AMateira("ice")
+ {
+    std::cout<<"Ice default constructor called."<<std::endl;
+ }
 
  
-Ice(const Ice &original) : AMateira();
+Ice::Ice(const Ice &original) : AMateira();
 {
+    std::cout<<"Ice copy constructor called."<<std::endl;
     *this = original;
 }
 
-Ice &operator=(const Ice &original)
+Ice::Ice &operator=(const Ice &original)
 {
+    std::cout<<"Ice copy assignment constructor called."<<std::endl;
     if (this != &original)
     {
         _type = original._type;
     }
+    return(*this);
     
 }
 
-~Ice() : AMateira()
-{}
-
-Ice::void setType()
+Ice::~Ice() : AMateira()
 {
-    _type = "ice";
+    std::cout<<"Ice destructor called."<<std::endl;
 }
 
-Cure* clone() const
+
+Amateria* Ice::clone() const
 {
-    return (new Ice._type);
+    return (new Ice);
 }
 
-std::string const &getName() const
-{
-    return (ICharacter._type);
-    
-}
 
-void use(int idx, ICharacter& target)
+void Ice::use(int idx, ICharacter& target)
 {
-    std::cout<<"* shoots an ice bolt at "<<_type<<" *"<<std::endl;
-    
+    std::cout<<"* shoots an ice bolt at "<<target.getName()<<" *"<<std::endl; 
 }
 
        

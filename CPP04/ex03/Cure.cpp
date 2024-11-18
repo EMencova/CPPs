@@ -3,26 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:43:25 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/18 15:45:51 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/18 21:44:11 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cure.hpp"
+#include "./incl/Cure.hpp"
 
-Cure() : AMateira()
-{}
+Cure::Cure() : AMateria("cure")
+{
+    std::cout<<"Cure default constructor called."<<std::endl;
+}
 
-Cure(const Cure &original) : AMateira()
+
+Cure::Cure(const Cure &original) : AMateria()
 {
     *this =  original;
+    std::cout<<"Cure copy constructor called."<<std::endl;
 }
 
 
 Cure &operator=(const Cure &original)
 {
+    std::cout<<"Cure copy assignment constructor called."<<std::endl;
     if (this != &original)
     {
         _type = original._type;
@@ -30,21 +35,19 @@ Cure &operator=(const Cure &original)
     return (*this);
 }
 
- ~Cure(){}
- 
+ Cure::~Cure()
+ {
+    std::cout<<"Cure destructor called."<<std::endl;
+ }
 
-void Cure::setType()
+
+AMateria* Cure::clone() const
 {
-    _type = "cure";
+    return (new Cure);
 }
 
-Cure* clone() const
+void Cure::use(int idx, ICharacter& target)
 {
-    return (new Cure._type);
-}
-
-void use(int idx, ICharacter& target)
-{
-    std::cout<<" * heals "<<_type<<"’s wounds *"<<std::endl;
+    std::cout<<" * heals "<<target.getName()<<"’s wounds *"<<std::endl;
     
 }

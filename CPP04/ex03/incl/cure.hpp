@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:27:43 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/18 16:09:59 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/18 22:05:48 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-# define ICE_HPP
+#ifndef Cure_HPP
+# define Cure_HPP
 
-class Ice : virtual public AMateira
+# include "AMateria.hpp"
+
+class Cure : public AMateria
 {
     public:
-        Ice();
-        Ice(const Ice &original);
-        Ice &operator=(const Ice &original);
-        ~Ice();
+        Cure();
+        Cure(const Cure &original);
+        Cure &operator=(const Cure &original);
+        virtual ~Cure();
 
-        Ice* clone() const;
-        std::string const &getName() const;
-        void use(int idx, ICharacter& target);
-        void setType();
-        std::string const &getName() const;
+        AMateria* clone() const;
+        void    use(ICharacter& target);
 };
 
 
