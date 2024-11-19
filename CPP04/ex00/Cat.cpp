@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:06:56 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/17 21:19:29 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/19 22:04:33 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
     Cat::Cat() : Animal()
     {
         std::cout<<"Cat default constructor called."<<std::endl;
+        type = "Cat";
     }
 
     

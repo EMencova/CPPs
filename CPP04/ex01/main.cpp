@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:55:12 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/17 21:41:59 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/19 22:11:40 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@
 
 int main()
 {
-
 	const Animal* dog = new Dog();
     const Animal* cat = new Cat();
 
     delete dog;
     delete cat;
 
+	Dog basic;
+    {
+        Dog tmp = basic;
+    }
+	
     const Animal* animals[4] = { new Dog(), new Dog(),new Cat(), new Cat()};
     for ( int i = 0; i < 4; i++ ) {
         delete animals[i];

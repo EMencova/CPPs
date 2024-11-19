@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:13:54 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/19 12:33:45 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/19 22:22:51 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class IMateriaSource
     public:
         virtual ~IMateriaSource(){}
         virtual void learnMateria(AMateria*) = 0;
-        virtual AMateria* createMateria(std::string const &type) = 0;
+        virtual AMateria* createMateria(std::string const & type) = 0;
 };
 
 #endif

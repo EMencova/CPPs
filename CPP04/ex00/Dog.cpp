@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:07:20 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/17 21:19:40 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/19 22:04:18 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
  Dog::Dog() : Animal()
  {
     std::cout<<"Dog default constructor called."<<std::endl;
+    type = "Dog";
  }
 
 Dog::Dog(const Dog &original) : Animal()
