@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateiraSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:13:57 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/18 22:12:12 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/19 12:11:37 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 MateriaSource::MateriaSource()
 {
-    std::cout<<"MateriaSource constructor called."std::endl;
+    std::cout<<"MateriaSource constructor called."<<std::endl;
     
     for (int i = 0; i < 4; i++)
         inv[i]= NULL;
@@ -23,14 +23,14 @@ MateriaSource::MateriaSource()
 
 MateriaSource::MateriaSource(const MateriaSource &original)
 {
-    std::cout<<"MateriaSource copy constructor called."std::endl;
+    std::cout<<"MateriaSource copy constructor called."<<std::endl;
     *this = original;
 }
 
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &original)
 {
-    std::cout<<"MateriaSource copy assignment constructor called."std::endl;
+    std::cout<<"MateriaSource copy assignment constructor called."<<std::endl;
     if (this != &original)
     {
         for (int i = 0; i < 4; i++)
@@ -41,7 +41,7 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &original)
 
 MateriaSource::~MateriaSource()
 {
-    std::cout<<"MateriaSource destructor called."std::endl;
+    std::cout<<"MateriaSource destructor called."<<std::endl;
     for (int i = 0; i < 4; i++)
     {
         if (inv[i])
@@ -49,11 +49,11 @@ MateriaSource::~MateriaSource()
     } 
 }
 
-void		MateriaSourse::learnMateria(AMateria* amat)
+void		MateriaSource::learnMateria(AMateria* amat)
 {
     for (int i = 0; i < 4; i++)
     {
-         if (inv == NULL)
+         if (inv[i] == NULL)
          {
             inv[i] = amat;
             return;
@@ -64,15 +64,14 @@ void		MateriaSourse::learnMateria(AMateria* amat)
 
 AMateria*	MateriaSource::createMateria(const std::string& type)
 {
-	AMateria*	new = NULL;
-
+    AMateria* mat;
 	for (int i = 3; i >= 0; i--)
 	{
 		if (inv[i] != NULL && inv[i]->getType() == type)
 		{
-			new = inv[i]->clone();
+			mat = inv[i]->clone();
 		}
 	}
-	return (new);
+	return (mat);
 }
 

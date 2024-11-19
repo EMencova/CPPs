@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+         #
+#    By: emencova <emencova@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/07 15:32:46 by emencova          #+#    #+#              #
-#    Updated: 2024/11/18 22:01:30 by eliskam          ###   ########.fr        #
+#    Updated: 2024/11/19 12:12:47 by emencova         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = AAnimal
+NAME = Materia
 
 CC = c++
 
@@ -21,7 +21,7 @@ SRC = main.cpp \
 	Cure.cpp \
 	Ice.cpp \
 	ICharacter.cpp \
-	MateiraSource.cpp
+	MateriaSource.cpp
 	
 
 OBJ = $(SRC:.cpp=.o)

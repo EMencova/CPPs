@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ICharacter.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:08:31 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/19 10:47:14 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/19 12:06:12 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./incl/ICharacter.hpp"
+#include "./incl/Character.hpp"
 
-ICharacter::Character()
+Character::Character()
 {
     std::cout<<"Character default constructor called."<<std::endl;
     _name = "Undefined";
@@ -21,7 +21,7 @@ ICharacter::Character()
 }
 
 
-ICharacter::Character(std::string name)
+Character::Character(std::string name)
 {
     _name = name;
     for (int i = 0; i < 4; i++)
@@ -29,7 +29,7 @@ ICharacter::Character(std::string name)
     std::cout<<_name<<" character created."<<std::endl;    
 }
 
-ICharacter::Character(const Character &original)
+Character::Character(const Character &original)
 {
     std::cout<<"Character copy constructor called."<<std::endl;
     for (int i = 0; i < 4; i++)
@@ -37,7 +37,7 @@ ICharacter::Character(const Character &original)
     *this = original;  
 }
 
-ICharacter &Character::operator=(const Character &original)
+Character &Character::operator=(const Character &original)
 {
     std::cout<<"Character copy assignment constructor called."<<std::endl;
     if(this != &original)
@@ -48,7 +48,7 @@ ICharacter &Character::operator=(const Character &original)
     return (*this);
 }
 
-ICharacter::~Character()
+Character::~Character()
 {
     std::cout<<"Character destructor called."<<std::endl;
     
@@ -64,7 +64,7 @@ std::string const &Character::getName() const
     return(_name);
 }
 
-void    Character::equip(AMateira *m)
+void    Character::equip(AMateria *m)
 {
     for (int i = 0; i < 4; i++)
     {
@@ -76,7 +76,7 @@ void    Character::equip(AMateira *m)
     }
     for (int i = 0; i < 4; i++)
     {
-        if (inv[i] = NULL)
+        if (inv[i] == NULL)
         {
             inv[i] = m;
             return;
@@ -91,7 +91,7 @@ void Character::unequip(int idx)
     {
         if(inv[idx])
         {
-            std::cout<<inv[i]->getType()<<" is unequipped."<<std::endl;
+            std::cout<<inv[idx]->getType()<<" is unequipped."<<std::endl;
             inv[idx] = NULL;
         }
         else

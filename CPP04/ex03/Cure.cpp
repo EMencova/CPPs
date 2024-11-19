@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:43:25 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/19 10:44:21 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/19 11:49:59 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./incl/cure.hpp"
+#include "./incl/Cure.hpp"
 
 Cure::Cure() : AMateria("cure")
 {

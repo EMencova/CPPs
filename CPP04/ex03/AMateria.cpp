@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:54:21 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/19 10:28:49 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/19 13:05:13 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ AMateria::~AMateria()
  }
  
  void AMateria::use(ICharacter &target)
- {
-    std::cout<<_type << "targets " << target.getName();
+ { 
+    std::cout<<_type << " targets " << target.getName();
  }
 

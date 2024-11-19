@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:55:12 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/17 20:13:46 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/19 13:26:59 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@ WrongAnimal::WrongAnimal()
 {
     std::cout<<"WrongAnimal default constructor called."<<std::endl;
 }
-/*
-WrongAnimal::WrongAnimal(std::string newtype)
-{
-    type = newtype;
-    std::cout<<"Animal type = "<<type<<" created."<<std::endl;
-}*/
 
 
 WrongAnimal::WrongAnimal(const WrongAnimal &original)

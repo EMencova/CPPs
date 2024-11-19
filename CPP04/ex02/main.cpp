@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:55:12 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/17 22:11:02 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/19 13:29:51 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@ int main()
     int N = 6;
     AAnimal *animals[N];
 
-    std::cout << std::endl << "---- Creating animals -----" << std::endl << std::endl;
+    std::cout << std::endl << "Creating animals" << std::endl << std::endl;
     for(int i = 0; i < N; i++)
     {
-        std::cout << "[ " << i << " ]" << std::endl;
+        std::cout << i << std::endl;
         if(i % 2 == 0)
             animals[i] = new Dog();
         else
             animals[i] = new Cat();
     }
 
-    std::cout << std::endl << "---- Deleting animals -----" << std::endl << std::endl;
+    std::cout << std::endl << "Deleting animals" << std::endl << std::endl;
     for(int i = 0; i < N; i++)
     {
-        std::cout << "[ " << i << " ]" << std::endl;
+        std::cout << i << std::endl;
         delete animals[i];
     }
 }
