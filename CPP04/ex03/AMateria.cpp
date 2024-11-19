@@ -6,13 +6,13 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:54:21 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/18 21:38:09 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/19 10:28:49 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./incl/AMateria.hpp"
 
-AMateira::AMateria()
+AMateria::AMateria()
 {
        std::cout<<"AMateria default constructor called."<<std::endl;
 }

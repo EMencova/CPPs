@@ -6,11 +6,11 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:43:25 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/18 21:44:11 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/19 10:44:21 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./incl/Cure.hpp"
+#include "./incl/cure.hpp"
 
 Cure::Cure() : AMateria("cure")
 {
@@ -25,7 +25,7 @@ Cure::Cure(const Cure &original) : AMateria()
 }
 
 
-Cure &operator=(const Cure &original)
+Cure &Cure::operator=(const Cure &original)
 {
     std::cout<<"Cure copy assignment constructor called."<<std::endl;
     if (this != &original)
@@ -46,7 +46,7 @@ AMateria* Cure::clone() const
     return (new Cure);
 }
 
-void Cure::use(int idx, ICharacter& target)
+void Cure::use(ICharacter& target)
 {
     std::cout<<" * heals "<<target.getName()<<"’s wounds *"<<std::endl;
     

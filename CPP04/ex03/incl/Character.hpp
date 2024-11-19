@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:11:38 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/18 22:08:31 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/19 10:27:35 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Character : public ICharacter
         Character &operator=(const Character &original);
         ~Character();
 
-        void    equip(AMateira *m);
+        void    equip(AMateria *m);
         void unequip(int idx);
         void use(int idx, ICharacter& target);
         std::string const &getName() const;

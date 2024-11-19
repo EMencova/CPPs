@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:27:43 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/18 20:53:00 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/19 10:44:47 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Ice : public AMateria
         virtual ~Ice();
 
         AMateria* clone() const;
-        void use(int idx, ICharacter& target);
+        void use(ICharacter& target);
 };
 
 
