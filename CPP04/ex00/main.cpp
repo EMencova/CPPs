@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:55:12 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/17 19:47:20 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/19 23:04:09 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int main()
 	const Animal* ani = new Animal();
 	const Animal* anidog = new Dog();
 	const Animal* anicat = new Cat();
-    std::cout << "ani Type: " << ani->getType() << " Animal " << std::endl;
-    std::cout << "anidog Type: " << anidog->getType() << " Dog " << std::endl;
-    std::cout << "anicat Type: " << anicat->getType() << " Cat " << std::endl;
+    std::cout << "ani Type: " << ani->getType() << std::endl;
+    std::cout << "anidog Type: " << anidog->getType() << std::endl;
+    std::cout << "anicat Type: " << anicat->getType() << std::endl;
 	anidog->makeSound();
 	anicat->makeSound();
 	ani->makeSound();

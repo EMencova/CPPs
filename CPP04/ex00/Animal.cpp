@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:06:34 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/19 13:22:29 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/19 23:03:40 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 Animal::Animal()
 {
     std::cout<<"Animal default constructor called."<<std::endl;
+    type = "NotDefined";
 }
 
 Animal::Animal(const Animal &original)
