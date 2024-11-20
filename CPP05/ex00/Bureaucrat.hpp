@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:26 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/20 14:51:51 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/20 17:02:38 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,19 @@ class Bureaucrat
         Bureaucrat &operator=(const Bureaucrat &original);
         ~Bureaucrat();
 
-        void getName();
-        void getGrade();
+        std::string getName();
+        int getGrade();
         void increment();
         void decrement();
-    
+        
+        class GradeTooHighException : public std::exception
+        {
+            
+        }
+        class GradeTooLowException: public std::exception
+        {
+            
+        }
 }
 
 #endif

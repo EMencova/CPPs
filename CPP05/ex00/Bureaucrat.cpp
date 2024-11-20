@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:29 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/20 15:10:59 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:20:33 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ Bureaucrat &operator=(const Bureaucrat &original)
     return (*this);
 }
 
-~Bureaucrat()
+Bureaucrat::~Bureaucrat()
 {
     std::cout<<"Bureaucrat destructor called."<<std::endl;
 }
 
-void getName()
+std::string Bureaucrat::getName()
 {
     return (name);
 }
 
-void getGrade()
+int Bureaucrat::getGrade()
 {
     return (_grade);
 }
@@ -61,5 +61,3 @@ void decrement()
     
 }
 
-Bureaucrat::GradeTooHighException
-Bureaucrat::GradeTooLowException
