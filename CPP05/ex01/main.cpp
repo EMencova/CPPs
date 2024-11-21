@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:22 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/21 16:02:14 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/21 15:26:52 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int main()
     try 
     {
         Bureaucrat test1("El", 140);
-        //std::cout<<test1<<std::endl;
+      //  std::cout<<test1.getGrade()<<std::endl;
         for (int i = 0; i < 11; i++)
         {
-            std::cout<<test1<<std::endl;
+            std::cout<<test1.getGrade()<<std::endl;
             test1.decrement();
         } 
     }
@@ -37,10 +37,10 @@ int main()
     try 
     {
         Bureaucrat test2("Ha", 10);
-       //std::cout<<test2<<std::endl;
+       // std::cout<<test2.getGrade()<<std::endl;
         for (int i = 0; i < 11; i++)
         {
-            std::cout<<test2<<std::endl;
+            std::cout<<test2.getGrade()<<std::endl;
             test2.increment();
         } 
     }

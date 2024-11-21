@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:29 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/21 16:00:02 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/21 15:55:27 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ Bureaucrat::~Bureaucrat()
     std::cout<<"Bureaucrat "<<name<<" destructor called."<<std::endl;
 }
 
-std::string Bureaucrat::getName() const
+std::string Bureaucrat::getName()
 {
     return (name);
 }
 
-unsigned int Bureaucrat::getGrade() const
+unsigned int Bureaucrat::getGrade()
 {
     return (grade);
 }
@@ -84,3 +84,4 @@ std::ostream& operator<<(std::ostream &o, const Bureaucrat &ref)
 	o << "Bureaucrat name: " << ref.getName() << ", bureaucrat grade " << ref.getGrade();
     return (o);
 }
+
