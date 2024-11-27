@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:51:59 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/27 13:56:07 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:46:50 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,7 @@ int    Form::getGradeExec() const
 void   Form::beSigned(Bureaucrat &p)
 {
     if(_signed)
-    {
-        std::cout
-    }
-    if
+    
 }
 
 
