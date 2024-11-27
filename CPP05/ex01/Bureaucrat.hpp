@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:26 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/21 15:54:19 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:01:40 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class Bureaucrat
         unsigned int getGrade();
         void increment();
         void decrement();
+        void    signForm();
         
         class GradeTooHighException : public std::exception
         {
@@ -51,6 +52,6 @@ class Bureaucrat
                 }
         };
 };
-std::ostream&   operator<<( std::ostream& o, const Bureaucrat& rhs);
+std::ostream&   operator<<( std::ostream& o, const Bureaucrat& ref);
 
 #endif
