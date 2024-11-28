@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:52:51 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 14:52:10 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/28 17:56:28 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 RobotomyRequestForm::RobotomyRequestForm()
 {
     
+}
+RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm(target, 72,45)
+{
+    _target = target;
 }
 RobotomyRequestForm:: ~RobotomyRequestForm()
 {
@@ -29,7 +33,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 {
     if(this != &original)
     {
-        
+        _target = original._target;
     }
     return(*this);
     

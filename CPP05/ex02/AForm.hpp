@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:48:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 14:46:02 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/28 17:42:53 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class AForm
 {
     private:
-        const std::string _name;
+        const std::string _target;
         bool    _signed;
         const unsigned int _grade_sign;
         const int _grade_exec;
@@ -31,12 +31,12 @@ class AForm
         AForm &operator=(const AForm &original);
         virtual ~AForm();  
         
-        AForm(const std::string name, const unsigned int grade_sign);
+        AForm(const std::string target, const unsigned int grade_sign, const unsigned int grade_exec);
         std::string getName() const;
         int     getGradeSign() const;
         int     getGradeExec() const;
         void   beSigned(Bureaucrat &p);
-        virtual int     execute(Bureaucrat const & executor) const = 0;
+        virtual void     execute(Bureaucrat const & executor) const = 0;
         
 
 

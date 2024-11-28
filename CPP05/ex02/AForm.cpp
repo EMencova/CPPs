@@ -6,24 +6,24 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:51:59 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 14:43:29 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/28 17:34:14 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
-AForm::AForm(): _name(""), _signed(false), _grade_sign(150), _grade_exec(150)
+AForm::AForm(): _target(""), _signed(false), _grade_sign(150), _grade_exec(150)
 {
     std::cout<<"AForm constructor called."<<std::endl;
 }
 
-AForm::AForm(const std::string name, const unsigned int grade_sign) : _name(name), _signed(false), _grade_sign(grade_sign),_grade_exec(grade_sign - 1)
+AForm::AForm(const std::string target, const unsigned int grade_sign) : _target(target), _signed(false), _grade_sign(grade_sign),_grade_exec(grade_sign - 1)
 { 
     std::cout<<"Bureaucrat "<<name<<" constructor called."<<std::endl;
     std::cout<<_name<<" created."<<std::endl;
 }
 
-AForm::AForm(const AForm &original) : _name (original._name),_signed(original._signed),_grade_sign (original._grade_sign),_grade_exec (original._grade_exec)
+AForm::AForm(const AForm &original) : _target (original._target),_signed(original._signed),_grade_sign (original._grade_sign),_grade_exec (original._grade_exec)
 {
     std::cout<<"AForm copy constructor called."<<std::endl;
 }
