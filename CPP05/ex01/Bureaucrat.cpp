@@ -1,0 +1,101 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/20 13:24:29 by emencova          #+#    #+#             */
+/*   Updated: 2024/11/28 12:36:08 by emencova         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Bureaucrat.hpp"
+
+
+Bureaucrat::Bureaucrat() : _name("Unknown"), _grade(150)
+{
+    std::cout<<"Bureaucrat default constructor called."<<std::endl;
+}
+
+Bureaucrat::Bureaucrat(std::string name, unsigned int const grade) : _name(name), _grade(grade)
+{
+    std::cout<<"Bureaucrat "<<_name<<" constructor called."<<std::endl;
+    if (_grade < 0)
+        throw Bureaucrat::GradeTooHighException();
+    if (_grade > 150)
+        throw Bureaucrat::GradeTooHighException();
+    std::cout<<_name<<" created!"<<std::endl;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &original)
+{
+
+    std::cout<<"Bureaucrat copy constructor called."<<std::endl;
+    *this = original;
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &original)
+{
+    std::cout<<"Bureaucrat copy assignment constructor called."<<std::endl;
+    if (this != &original)
+    {
+        _name = original._name;
+        _grade = original._grade;
+    }
+    return (*this);
+}
+
+Bureaucrat::~Bureaucrat()
+{
+    std::cout<<"Bureaucrat "<<_name<<" destructor called."<<std::endl;
+}
+
+std::string Bureaucrat::getName()
+{
+    return (_name);
+}
+
+unsigned int Bureaucrat::getGrade()
+{
+    return (_grade);
+}
+
+void Bureaucrat::increment()
+{
+    _grade -=1;
+    if (_grade < 1)
+        throw Bureaucrat::GradeTooLowException();
+    if(_grade > 150)
+        throw Bureaucrat::GradeTooHighException();
+    
+}
+void Bureaucrat::decrement()
+{
+    _grade += 1;
+    if (_grade < 1)
+        throw Bureaucrat::GradeTooLowException();
+    if(_grade > 150)
+        throw Bureaucrat::GradeTooHighException();  
+}
+
+void     Bureaucrat::signForm(std::string name, bool sign)
+{ 
+    if(sign)
+        std::cout<<_name<<" signed "<<name<<std::endl;
+    else
+        std::cout<<_name<<" couldn't sign "<<_name<<" because he doesn't have the ability to do it,"<<std::endl;
+}
+ /*
+std::ostream &	operator<<(std::ostream &o, Form const &ref)
+{
+	o << "Form name : " << ref.getName() << std::endl;
+	o << "Signed : ";
+	if (ref.getGradeSign())
+		o << "True" << std::endl;
+	else
+		o << "False" << std::endl;
+	o << "Need to be grade " << ref.getGradeSign() << " to sign it, and grade " << ref.getGradeExec() << " to execute it.";
+	return o;
+}
+*/

@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:48:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 12:36:29 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:23:23 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class Form
         int     getGradeSign() const;
         int     getGradeExec() const;
         void   beSigned(Bureaucrat &p);
-
+        
 
     class GradeTooHightException : public std::exception
     {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   Form.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:51:59 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 12:36:36 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:43:29 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void   Form::beSigned(Bureaucrat &p)
 {
     if(_signed)
     {
-        std::cout<<_name<<" form is already signed."<<std::endl;
+        std::cout<<_name<<" Form is already signed."<<std::endl;
         return;
     }
     else if (p.getGrade() > _grade_sign)

@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:26 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 14:49:32 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:24:35 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
-# include "AForm.hpp"
 
 
 class Bureaucrat
@@ -35,7 +34,6 @@ class Bureaucrat
         void increment();
         void decrement();
         void    signForm(std::string name, bool sign);
-        void    executeForm(AForm const & form);
         
         class GradeTooHighException : public std::exception
         {
