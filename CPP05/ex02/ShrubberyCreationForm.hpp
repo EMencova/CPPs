@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:48:03 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 17:55:27 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/28 22:40:27 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,25 @@
 
 # include <iostream>
 # include "AForm.hpp"
+# include <fstream>
 
 
 class ShrubberyCreationForm : public AForm
 {
     private:
-    std::string _target;
+    Bureaucrat &_target;
 
     
     public:
-    ShrubberyCreationForm();
-    ShrubberyCreationForm(std::string target);
+    ShrubberyCreationForm(Bureaucrat &target);
     ~ShrubberyCreationForm();
     ShrubberyCreationForm(const ShrubberyCreationForm &original);
     ShrubberyCreationForm &operator=(const ShrubberyCreationForm &original);
     void     execute(Bureaucrat const &executor) const;
+
 };
 
+std::ostream&   operator<<( std::ostream& o, const ShrubberyCreationForm &ref);
 
 
 #endif

@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: emencova <emencova@student.42.fr>          +#+  +:+       +#+         #
+#    By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/07 15:32:46 by emencova          #+#    #+#              #
-#    Updated: 2024/11/28 11:20:43 by emencova         ###   ########.fr        #
+#    Updated: 2024/11/28 22:54:11 by eliskam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Form
+NAME = Tree
 
 CC = c++
 
@@ -18,8 +18,11 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC = main.cpp \
 	Bureaucrat.cpp \
-	Form.cpp\
-
+	AForm.cpp\
+	PresidentialPardonForm.cpp\
+	RobotomyRequestForm.cpp\
+	ShrubberyCreationForm.cpp\
+	
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

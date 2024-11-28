@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:48:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 17:42:53 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/28 22:56:23 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 # include <iostream>
 # include "Bureaucrat.hpp"
 
-
+class Bureaucrat;
 class AForm
 {
-    private:
-        const std::string _target;
+    protected:
+        const std::string _name;
         bool    _signed;
         const unsigned int _grade_sign;
         const int _grade_exec;
@@ -31,10 +31,10 @@ class AForm
         AForm &operator=(const AForm &original);
         virtual ~AForm();  
         
-        AForm(const std::string target, const unsigned int grade_sign, const unsigned int grade_exec);
+        AForm(const std::string name, const unsigned int grade_sign,const int grade_exec);
         std::string getName() const;
         int     getGradeSign() const;
-        int     getGradeExec() const;
+        unsigned int     getGradeExec() const;
         void   beSigned(Bureaucrat &p);
         virtual void     execute(Bureaucrat const & executor) const = 0;
         
@@ -52,16 +52,25 @@ class AForm
 
     class GradeTooLowException : public std::exception
     {
-        const char *what() const throw()
+        public:
+            const char *what() const throw()
                 {
                     return ("Grade is too low, 1 is maximum!");
                 }
     };
-                        
+    
+    class FormNotSignedException: public std::exception
+        {
+            public:
+                const char *what() const throw()
+                {
+                    return ("Form not signed!");
+                }
+        };
     
 };
 
-std::ostream&   operator<<( std::ostream& o, const Form &ref);
+std::ostream&   operator<<( std::ostream& o, const AForm &ref);
 
 
 

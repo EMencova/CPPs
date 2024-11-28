@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:53:14 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 17:55:22 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/28 22:58:08 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,25 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 # include "AForm.hpp"
+# include "Bureaucrat.hpp"
+# include <cstdlib>
 
 class RobotomyRequestForm : public AForm
 {
     private:
-    std::string _target;
+    Bureaucrat &_target;
     
     public:
-    RobotomyRequestForm();
+    RobotomyRequestForm(Bureaucrat &target);
     ~RobotomyRequestForm();
     RobotomyRequestForm(const RobotomyRequestForm &original);
     RobotomyRequestForm &operator=(const RobotomyRequestForm &original);
 
-    virtual void     execute(Bureaucrat const & executor) const = 0;
+    void     execute(const Bureaucrat & executor) const;
     
 };
+
+std::ostream&   operator<<( std::ostream& o, const RobotomyRequestForm &ref);
 
 
 #endif

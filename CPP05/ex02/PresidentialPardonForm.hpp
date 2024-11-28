@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:51:51 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 17:55:12 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/28 22:26:21 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,23 @@
 # define PRESIDENTIALPARDONFORM_HPP
 
 # include "AForm.hpp"
+# include "Bureaucrat.hpp"
+
 
 class PresidentialPardonForm : public AForm
 {
     private:
-    std::string _target;
+    Bureaucrat &_target;
 
     
     public:
-    PresidentialPardonForm();
+    PresidentialPardonForm(Bureaucrat &target);
     ~PresidentialPardonForm();
-    PresidentialPardonForm(std::string target);
     PresidentialPardonForm(const PresidentialPardonForm &original);
     PresidentialPardonForm &operator=(const PresidentialPardonForm &original);
-}
+    void execute(Bureaucrat & executor) const;
+};
 
+std::ostream&   operator<<( std::ostream& o, const PresidentialPardonForm &ref);
 
 #endif

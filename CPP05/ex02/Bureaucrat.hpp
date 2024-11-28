@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:26 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 14:49:32 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/28 22:55:14 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <iostream>
 # include "AForm.hpp"
 
-
+class AForm;
 class Bureaucrat
 {
     private:
@@ -31,11 +31,11 @@ class Bureaucrat
         ~Bureaucrat();
 
         std::string getName();
-        unsigned int getGrade();
+        unsigned int getGrade() const;
         void increment();
         void decrement();
         void    signForm(std::string name, bool sign);
-        void    executeForm(AForm const & form);
+        void    executeForm(const AForm & form);
         
         class GradeTooHighException : public std::exception
         {

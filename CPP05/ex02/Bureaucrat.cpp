@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:29 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 12:36:08 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/28 22:52:21 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Bureaucrat::Bureaucrat() : _name("Unknown"), _grade(150)
 Bureaucrat::Bureaucrat(std::string name, unsigned int const grade) : _name(name), _grade(grade)
 {
     std::cout<<"Bureaucrat "<<_name<<" constructor called."<<std::endl;
-    if (_grade < 0)
+    if (_grade < 1)
         throw Bureaucrat::GradeTooHighException();
     if (_grade > 150)
         throw Bureaucrat::GradeTooHighException();
@@ -56,7 +56,7 @@ std::string Bureaucrat::getName()
     return (_name);
 }
 
-unsigned int Bureaucrat::getGrade()
+unsigned int Bureaucrat::getGrade() const
 {
     return (_grade);
 }
@@ -85,6 +85,16 @@ void     Bureaucrat::signForm(std::string name, bool sign)
         std::cout<<_name<<" signed "<<name<<std::endl;
     else
         std::cout<<_name<<" couldn't sign "<<_name<<" because he doesn't have the ability to do it,"<<std::endl;
+}
+
+
+void	Bureaucrat::executeForm(const AForm& form)
+{
+	if (_grade > form.getGradeExec()) {
+		std::cout << _name << " can't execute " << form.getName() << "." << std::endl;
+		throw AForm::GradeTooLowException();
+	}
+	std::cout << _name << " executed " << form.getName() << "." << std::endl;
 }
  /*
 std::ostream &	operator<<(std::ostream &o, Form const &ref)
