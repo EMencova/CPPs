@@ -6,39 +6,32 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:51:59 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/27 18:46:50 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:36:36 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form()
+Form::Form(): _name(""), _signed(false), _grade_sign(150), _grade_exec(150)
 {
     std::cout<<"Form constructor called."<<std::endl;
 }
 
-Form::Form(std::string name, unsigned int const grade_sign) : _name(name), _grade_sign(grade_sign)
+Form::Form(const std::string name, const unsigned int grade_sign) : _name(name), _signed(false), _grade_sign(grade_sign),_grade_exec(grade_sign - 1)
 { 
     std::cout<<"Bureaucrat "<<name<<" constructor called."<<std::endl;
     std::cout<<_name<<" created."<<std::endl;
 }
 
-Form::Form(const Form &original)
+Form::Form(const Form &original) : _name (original._name),_signed(original._signed),_grade_sign (original._grade_sign),_grade_exec (original._grade_exec)
 {
     std::cout<<"Form copy constructor called."<<std::endl;
-    *this = original;
 }
 
 Form &Form::operator=(const Form &original)
 {
+    _signed= original._signed;
     std::cout<<"Form copy assignment constructor called."<<std::endl;
-    if (this != &original)
-    {
-        _name = original._name;
-        _grade = original._grade;
-        _grade_sign = original._grade_sign;
-        _grade_exec = original._grade_exec;
-    }
     return (*this);
 }
 
@@ -66,19 +59,33 @@ int    Form::getGradeExec() const
 void   Form::beSigned(Bureaucrat &p)
 {
     if(_signed)
-    
+    {
+        std::cout<<_name<<" form is already signed."<<std::endl;
+        return;
+    }
+    else if (p.getGrade() > _grade_sign)
+    {
+        p.signForm(_name,_signed);
+        throw Form::GradeTooLowException();
+    }
+    else
+    {
+        _signed = true;
+        p.signForm(_name, _signed);
+    }
 }
 
 
 
-std::ostream &	operator<<(std::ostream & o, Form const &rSym) {
-	o << "Form name : " << rSym.getName() << std::endl;
+std::ostream &	operator<<(std::ostream &o, Form const &ref)
+{
+	o << "Form name : " << ref.getName() << std::endl;
 	o << "Signed : ";
-	if (rSym.getSigned())
+	if (ref.getGradeSign())
 		o << "True" << std::endl;
 	else
 		o << "False" << std::endl;
-	o << "Need to be grade " << rSym.getSignGrade() << " to sign it, and grade " << rSym.getExecuteGrade() << " to execute it.";
+	o << "Need to be grade " << ref.getGradeSign() << " to sign it, and grade " << ref.getGradeExec() << " to execute it.";
 	return o;
 }
 

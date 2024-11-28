@@ -6,26 +6,26 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:29 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/27 13:21:48 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:36:08 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 
-Bureaucrat::Bureaucrat() : name("Unknown"), grade(150)
+Bureaucrat::Bureaucrat() : _name("Unknown"), _grade(150)
 {
     std::cout<<"Bureaucrat default constructor called."<<std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string _name, unsigned int const _grade) : name(_name), grade(_grade)
+Bureaucrat::Bureaucrat(std::string name, unsigned int const grade) : _name(name), _grade(grade)
 {
-    std::cout<<"Bureaucrat "<<name<<" constructor called."<<std::endl;
-    if (grade < 0)
+    std::cout<<"Bureaucrat "<<_name<<" constructor called."<<std::endl;
+    if (_grade < 0)
         throw Bureaucrat::GradeTooHighException();
-    if (grade > 150)
+    if (_grade > 150)
         throw Bureaucrat::GradeTooHighException();
-    std::cout<<name<<" created!"<<std::endl;
+    std::cout<<_name<<" created!"<<std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &original)
@@ -40,56 +40,62 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &original)
     std::cout<<"Bureaucrat copy assignment constructor called."<<std::endl;
     if (this != &original)
     {
-        name = original.name;
-        grade = original.grade;
+        _name = original._name;
+        _grade = original._grade;
     }
     return (*this);
 }
 
 Bureaucrat::~Bureaucrat()
 {
-    std::cout<<"Bureaucrat "<<name<<" destructor called."<<std::endl;
+    std::cout<<"Bureaucrat "<<_name<<" destructor called."<<std::endl;
 }
 
 std::string Bureaucrat::getName()
 {
-    return (name);
+    return (_name);
 }
 
 unsigned int Bureaucrat::getGrade()
 {
-    return (grade);
+    return (_grade);
 }
 
 void Bureaucrat::increment()
 {
-    grade -=1;
-    if (grade < 1)
+    _grade -=1;
+    if (_grade < 1)
         throw Bureaucrat::GradeTooLowException();
-    if(grade > 150)
+    if(_grade > 150)
         throw Bureaucrat::GradeTooHighException();
     
 }
 void Bureaucrat::decrement()
 {
-    grade += 1;
-    if (grade < 1)
+    _grade += 1;
+    if (_grade < 1)
         throw Bureaucrat::GradeTooLowException();
-    if(grade > 150)
+    if(_grade > 150)
         throw Bureaucrat::GradeTooHighException();  
 }
 
 void     Bureaucrat::signForm(std::string name, bool sign)
 { 
     if(sign)
-        std::cout<<_name<<" signed "<<name<<std::end;
+        std::cout<<_name<<" signed "<<name<<std::endl;
     else
-        std::cout<<_name<<" couldn't sign "<<name<<" because he doesn't have the ability to do it,"<<std::endl;
+        std::cout<<_name<<" couldn't sign "<<_name<<" because he doesn't have the ability to do it,"<<std::endl;
 }
-
-std::ostream& operator<<(std::ostream &o, const Bureaucrat &ref) 
+ /*
+std::ostream &	operator<<(std::ostream &o, Form const &ref)
 {
-	o << "Bureaucrat name: " << ref.getName() << ", bureaucrat grade " << ref.getGrade();
-    return (o);
+	o << "Form name : " << ref.getName() << std::endl;
+	o << "Signed : ";
+	if (ref.getGradeSign())
+		o << "True" << std::endl;
+	else
+		o << "False" << std::endl;
+	o << "Need to be grade " << ref.getGradeSign() << " to sign it, and grade " << ref.getGradeExec() << " to execute it.";
+	return o;
 }
-
+*/

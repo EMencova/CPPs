@@ -6,11 +6,11 @@
 #    By: emencova <emencova@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/07 15:32:46 by emencova          #+#    #+#              #
-#    Updated: 2024/11/20 13:24:44 by emencova         ###   ########.fr        #
+#    Updated: 2024/11/28 11:20:43 by emencova         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Bureaucrat
+NAME = Form
 
 CC = c++
 
@@ -18,6 +18,7 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC = main.cpp \
 	Bureaucrat.cpp \
+	Form.cpp\
 
 OBJ = $(SRC:.cpp=.o)
 
