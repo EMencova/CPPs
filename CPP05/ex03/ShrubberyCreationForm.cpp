@@ -6,14 +6,14 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:47:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/29 11:30:28 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:51:23 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
 
-ShrubberyCreationForm::ShrubberyCreationForm(Bureaucrat &target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("Money Tree", 145, 137), _target(target)
 {
     std::cout<<"ShrubberyCreationForm default constructor called."<<std::endl;
 }
@@ -39,6 +39,10 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
     }
     return(*this);      
 }
+const std::string ShrubberyCreationForm::getTarget() const
+{
+    return (_target);
+}
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
@@ -48,9 +52,8 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
         throw AForm::FormNotSignedException();
     else
     {
-        std::string filename = _target.getName() + "_shrubbery";
-
-        // Use .c_str() to convert the filename string to a const char* for the std::ofstream constructor
+        std::string filename = _target + "_shrubbery";
+        
         std::ofstream outfile(filename.c_str());
         if (!outfile.is_open())
         {
