@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:29 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/27 12:04:44 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/30 11:03:03 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &original)
     std::cout<<"Bureaucrat copy assignment constructor called."<<std::endl;
     if (this != &original)
     {
-        _name = original._name;
+        getName() = original.getName();
         _grade = original._grade;
     }
     return (*this);
@@ -65,18 +65,18 @@ void Bureaucrat::increment()
 {
     _grade -=1;
     if (_grade < 1)
-        throw Bureaucrat::GradeTooLowException();
-    if(_grade > 150)
         throw Bureaucrat::GradeTooHighException();
+    if(_grade > 150)
+        throw Bureaucrat::GradeTooLowException();
     
 }
 void Bureaucrat::decrement()
 {
     _grade += 1;
     if (_grade < 1)
-        throw Bureaucrat::GradeTooLowException();
+        throw Bureaucrat::GradeTooHighException();
     if(_grade > 150)
-        throw Bureaucrat::GradeTooHighException();  
+        throw Bureaucrat::GradeTooLowException();  
 }
 
 std::ostream& operator<<(std::ostream &o, const Bureaucrat &ref) 

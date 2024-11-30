@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:29 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 22:52:21 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/30 15:43:47 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Bureaucrat::Bureaucrat() : _name("Unknown"), _grade(150)
     std::cout<<"Bureaucrat default constructor called."<<std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, unsigned int const grade) : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(const std::string name, unsigned int const grade) : _name(name), _grade(grade)
 {
     std::cout<<"Bureaucrat "<<_name<<" constructor called."<<std::endl;
     if (_grade < 1)

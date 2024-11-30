@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:48:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 16:23:23 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/30 15:23:49 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,32 +35,29 @@ class Form
         std::string getName() const;
         int     getGradeSign() const;
         int     getGradeExec() const;
+        //getSigned()
         void   beSigned(Bureaucrat &p);
         
 
-    class GradeTooHightException : public std::exception
+    class GradeTooLowtException : public std::exception
     {
         public:
             const char *what() const throw()
                 {
-                    return ("Grade is too low, 150 is mininum!");
+                    return ("Grade is too low, 150 is minimumm!");
                 }
         
     };
 
-    class GradeTooLowException : public std::exception
+    class GradeTooHighException : public std::exception
     {
         const char *what() const throw()
                 {
-                    return ("Grade is too low, 1 is maximum!");
+                    return ("Grade is too high, 1 is maximum!");
                 }
-    };
-                        
-    
+    };                      
 };
 
 std::ostream&   operator<<( std::ostream& o, const Form &ref);
-
-
 
 #endif

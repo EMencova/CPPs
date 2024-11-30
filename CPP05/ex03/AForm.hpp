@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:48:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/29 13:10:54 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/30 15:25:19 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ class AForm
         public:
             const char *what() const throw()
                 {
-                    return ("Grade is too low, 150 is mininum!");
+                    return ("Grade is too high!");
                 }
         
     };
@@ -55,7 +55,7 @@ class AForm
         public:
             const char *what() const throw()
                 {
-                    return ("Grade is too low, 1 is maximum!");
+                    return ("Grade is too low!");
                 }
     };
     

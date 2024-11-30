@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:29 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 12:36:08 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/30 11:16:06 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &original)
     std::cout<<"Bureaucrat copy assignment constructor called."<<std::endl;
     if (this != &original)
     {
-        _name = original._name;
+        getName() = original.getName();
         _grade = original._grade;
     }
     return (*this);
@@ -51,12 +51,12 @@ Bureaucrat::~Bureaucrat()
     std::cout<<"Bureaucrat "<<_name<<" destructor called."<<std::endl;
 }
 
-std::string Bureaucrat::getName()
+std::string Bureaucrat::getName() const
 {
     return (_name);
 }
 
-unsigned int Bureaucrat::getGrade()
+unsigned int Bureaucrat::getGrade() const
 {
     return (_grade);
 }
@@ -65,18 +65,18 @@ void Bureaucrat::increment()
 {
     _grade -=1;
     if (_grade < 1)
-        throw Bureaucrat::GradeTooLowException();
-    if(_grade > 150)
         throw Bureaucrat::GradeTooHighException();
+    if(_grade > 150)
+        throw Bureaucrat::GradeTooLowException();
     
 }
 void Bureaucrat::decrement()
 {
     _grade += 1;
     if (_grade < 1)
-        throw Bureaucrat::GradeTooLowException();
+        throw Bureaucrat::GradeTooHighException();
     if(_grade > 150)
-        throw Bureaucrat::GradeTooHighException();  
+        throw Bureaucrat::GradeTooLowException();  
 }
 
 void     Bureaucrat::signForm(std::string name, bool sign)
@@ -84,7 +84,7 @@ void     Bureaucrat::signForm(std::string name, bool sign)
     if(sign)
         std::cout<<_name<<" signed "<<name<<std::endl;
     else
-        std::cout<<_name<<" couldn't sign "<<_name<<" because he doesn't have the ability to do it,"<<std::endl;
+        std::cout<<_name<<" couldn't sign "<<name<<" because he doesn't have the ability to do it."<<std::endl;
 }
  /*
 std::ostream &	operator<<(std::ostream &o, Form const &ref)

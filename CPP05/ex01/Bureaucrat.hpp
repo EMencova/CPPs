@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:26 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 16:24:35 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/30 11:07:38 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class Bureaucrat
 {
     private:
-        std::string _name;
+        const std::string _name;
         unsigned int _grade;
     
     public:
@@ -29,13 +29,13 @@ class Bureaucrat
         Bureaucrat &operator=(const Bureaucrat &original);
         ~Bureaucrat();
 
-        std::string getName();
-        unsigned int getGrade();
+        std::string getName() const;
+        unsigned int getGrade() const;
         void increment();
         void decrement();
         void    signForm(std::string name, bool sign);
         
-        class GradeTooHighException : public std::exception
+        class GradeTooLowException : public std::exception
         {
             public:
                 const char *what() const throw()
@@ -44,7 +44,7 @@ class Bureaucrat
                 }
         };
         
-        class GradeTooLowException: public std::exception
+        class GradeTooHighException: public std::exception
         {
             public:
                 const char *what() const throw()

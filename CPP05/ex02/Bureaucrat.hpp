@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:26 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 22:55:14 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/30 15:43:52 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ class AForm;
 class Bureaucrat
 {
     private:
-        std::string _name;
+        const std::string _name;
         unsigned int _grade;
     
     public:
         Bureaucrat();
-        Bureaucrat(std::string name, unsigned int const grade);
+        Bureaucrat(const std::string name, unsigned int const grade);
         Bureaucrat(const Bureaucrat &original);
         Bureaucrat &operator=(const Bureaucrat &original);
         ~Bureaucrat();
@@ -42,7 +42,7 @@ class Bureaucrat
             public:
                 const char *what() const throw()
                 {
-                    return ("Grade is too low, 150 is mininum!");
+                    return ("Grade is too high!");
                 }
         };
         
@@ -51,7 +51,7 @@ class Bureaucrat
             public:
                 const char *what() const throw()
                 {
-                    return ("Grade is too high, 1 is maximum!");
+                    return ("Grade is too low!");
                 }
         };
 };

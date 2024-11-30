@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:48:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 22:56:23 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/30 15:39:56 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ class AForm
         public:
             const char *what() const throw()
                 {
-                    return ("Grade is too low, 150 is mininum!");
+                    return ("Grade is too high!");
                 }
         
     };
@@ -55,7 +55,7 @@ class AForm
         public:
             const char *what() const throw()
                 {
-                    return ("Grade is too low, 1 is maximum!");
+                    return ("Grade is too low!");
                 }
     };
     

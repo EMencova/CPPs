@@ -6,7 +6,7 @@
 /*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:47:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/29 11:30:28 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/30 15:41:18 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,41 +40,42 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
     return(*this);      
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+
+void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
     if (executor.getGrade() > getGradeExec())
         throw Bureaucrat::GradeTooLowException();
-    else if (!_signed)
+    if (!_signed)
         throw AForm::FormNotSignedException();
-    else
+
+    // Use _target directly if it's a string, or ensure getName() is valid
+    std::string filename = _target + "_shrubbery";
+
+    std::ofstream outfile(filename.c_str());
+    if (!outfile.is_open())
     {
-        std::string filename = _target.getName() + "_shrubbery";
-
-        // Use .c_str() to convert the filename string to a const char* for the std::ofstream constructor
-        std::ofstream outfile(filename.c_str());
-        if (!outfile.is_open())
-        {
-            std::cerr << "Error: Could not open or create the file: " << filename << std::endl;
-            return;
-        }
-        for (int i = 0; i < 5; i++)
-        {
-            outfile <<
-                "         *" << std::endl <<
-                "        /o/" << std::endl <<
-                "       /o//o/" << std::endl <<
-                "     /o//o//o/" << std::endl <<
-                "    /o//o//o//o/" << std::endl <<
-                "  /o//o//o//o//o/" << std::endl <<
-                " /o//o//o//o//o//o/" << std::endl <<
-                "/o//o//o//o//o//o//o/" << std::endl <<
-                "        ||||" << std::endl <<
-                "        ||||" << std::endl <<
-                "   _____||||______" << std::endl << std::endl;
-        }
-
-        outfile.close();
+        std::cerr << "Error: Could not open or create the file: " << filename << std::endl;
+        return;
     }
+
+    for (int i = 0; i < 5; i++)
+    {
+        outfile <<
+            "         *" << std::endl <<
+            "        /o/" << std::endl <<
+            "       /o//o/" << std::endl <<
+            "     /o//o//o/" << std::endl <<
+            "    /o//o//o//o/" << std::endl <<
+            "  /o//o//o//o//o/" << std::endl <<
+            " /o//o//o//o//o//o/" << std::endl <<
+            "/o//o//o//o//o//o//o/" << std::endl <<
+            "        ||||" << std::endl <<
+            "        ||||" << std::endl <<
+            "   _____||||______" << std::endl << std::endl;
+    }
+
+    outfile.close();
+    std::cout << "Shrubbery created in file: " << filename << std::endl;
 }
 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:48:03 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 22:40:27 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/11/30 15:40:32 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class ShrubberyCreationForm : public AForm
     ~ShrubberyCreationForm();
     ShrubberyCreationForm(const ShrubberyCreationForm &original);
     ShrubberyCreationForm &operator=(const ShrubberyCreationForm &original);
-    void     execute(Bureaucrat const &executor) const;
+    void     execute(const Bureaucrat &executor) const;
 
 };
 
