@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:51:36 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/29 17:50:52 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/30 16:34:13 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ PresidentialPardonForm::~PresidentialPardonForm()
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &original)
+    : AForm(original), _target(original._target) // Explicitly initialize the base class and _target
 {
-    std::cout<<"PresidentialPardonForm copy constructor called."<<std::endl;
-    _target = original._target;
-    *this = original;
+    std::cout << "PresidentialPardonForm copy constructor called." << std::endl;
 }
+
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &original)
 {

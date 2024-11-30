@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:47:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/30 15:41:18 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/30 17:22:08 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
 
-ShrubberyCreationForm::ShrubberyCreationForm(Bureaucrat &target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string &target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
     std::cout<<"ShrubberyCreationForm default constructor called."<<std::endl;
 }
@@ -58,7 +58,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
         return;
     }
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 3; i++)
     {
         outfile <<
             "         *" << std::endl <<

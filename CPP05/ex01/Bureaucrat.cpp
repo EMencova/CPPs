@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:29 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/30 11:16:06 by emencova         ###   ########.fr       */
+/*   Updated: 2024/11/30 17:04:13 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &original)
     std::cout<<"Bureaucrat copy assignment constructor called."<<std::endl;
     if (this != &original)
     {
-        getName() = original.getName();
         _grade = original._grade;
     }
     return (*this);
