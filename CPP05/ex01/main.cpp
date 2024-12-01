@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:22 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/30 11:54:18 by emencova         ###   ########.fr       */
+/*   Updated: 2024/12/01 09:43:33 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	main()
 	Bureaucrat *	Tom = NULL;
 	Form *			firstForm = NULL;
 	Form *			secondForm = NULL;
-	Form *			thirdForm = NULL;
 
 	try
 	{
@@ -36,23 +35,16 @@ int	main()
 	try
 	{
 		secondForm = new Form("Second Form", 50);
-		thirdForm = new Form("Third Form", 42);
 		secondForm->beSigned(*Tom);
-		for(int i = 0; i < 5; i++)
-		{
-			thirdForm->beSigned(*Tom);
-			Tom->increment();
-		}
 	}
 	catch (const std::exception& e)
     {
 		std::cerr << e.what() << '\n';
 	}
-	//std::cout << *simpleForm << std::endl;
+	
 	delete Alan;
 	delete Tom;
 	delete firstForm;
 	delete secondForm;
-	delete thirdForm;
 	
 }

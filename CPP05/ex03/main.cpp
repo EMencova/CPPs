@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:22 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/29 16:02:05 by emencova         ###   ########.fr       */
+/*   Updated: 2024/12/01 11:50:45 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,36 @@
 
 int main()
 {
-	Intern	intern;
-	AForm	*f;
-	
+    Intern intern;
+    AForm *f;
 
-	f = intern.makeForm("shrubbery creation", "28C");
-	std::cout << *f << std::endl;
-	std::cout << std::endl;
+    std::string str1 = "28C";
+    std::string str2 = "28B";
+    std::string str3 = "28A";
+    std::string no = "0U";
+    
 
+    try
+    {
+        f = intern.makeForm("shrubbery creation", str1);
+        std::cout << *f << std::endl;
+        std::cout << std::endl;
 
-	f = intern.makeForm("robotomy request", "28B");
-	std::cout << *f << std::endl;
-	std::cout << std::endl;
+        f = intern.makeForm("robotomy request", str2);
+        std::cout << *f << std::endl;
+        std::cout << std::endl;
 
-	f = intern.makeForm("presidential pardon", "28A");
-	std::cout << *f << std::endl;
-	std::cout << std::endl;
-	
-	f = intern.makeForm("undefined", "0U");
-	delete f;
+        f = intern.makeForm("presidential pardon", str3);
+        std::cout << *f << std::endl;
+        std::cout << std::endl;
 
-	return 0;
+        f = intern.makeForm("undefined", no);
+        delete f;
+    }
+    catch (const Intern::noForm &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+
+    return 0;
 }

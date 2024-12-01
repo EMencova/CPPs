@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:51:59 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 22:56:35 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/12/01 10:32:26 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ unsigned int    AForm::getGradeExec() const
     return (_grade_exec);
 }
 
+ bool    AForm::getIfSigned() const
+ {
+    return (_signed);
+ }
 
 void   AForm::beSigned(Bureaucrat &p)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:51:51 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/29 17:50:38 by emencova         ###   ########.fr       */
+/*   Updated: 2024/12/01 11:51:28 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

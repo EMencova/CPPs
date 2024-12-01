@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:36:42 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/29 17:04:54 by emencova         ###   ########.fr       */
+/*   Updated: 2024/12/01 11:48:40 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,14 @@ class Intern
         Intern(const Intern &original);
         Intern &operator=(const Intern &original);
     
-        AForm* makeForm(const std::string &name, const std::string &target) const;
+        AForm* makeForm(const std::string &name,std::string &target) const;
+    
+    class noForm : public std::exception
+	{
+		public:
+			virtual const char *what() const throw() { return ("No Form with the provided name.");}
+	};
     
 };
-
-
 
 #endif

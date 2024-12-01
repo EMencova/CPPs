@@ -6,11 +6,12 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:22 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/30 17:20:11 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/12/01 10:59:21 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
+
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -20,13 +21,13 @@
 int	main() 
 {
 
-
+    std::string target = "test";
 	
 	Bureaucrat *	bA = new Bureaucrat("bA", 2);
 	Bureaucrat *	bB = new Bureaucrat("bB", 10);
 	Bureaucrat *	bC = new Bureaucrat("bC", 65);
-	AForm *			shru = new ShrubberyCreationForm(*bB);
-	AForm *			rob = new RobotomyRequestForm(*bA);
+	AForm *			shru = new ShrubberyCreationForm(target);
+	AForm *			rob = new RobotomyRequestForm(target);
 
 	try
 	{
@@ -46,7 +47,10 @@ int	main()
 	delete shru;
 	delete bC;
 	delete bB;
-	delete bC;*/
+}
+
+
+*/
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
@@ -56,38 +60,27 @@ int	main()
 int main() {
 
 	std::string target = "garden";
-    try {
-        // Create a Bureaucrat with a sufficient grade to execute the form
+    try
+    {
         Bureaucrat executor("Alice", 1);
-
-        // Create a ShrubberyCreationForm targeting "garden"
         ShrubberyCreationForm shrubberyForm(target);
-
-        // Sign the form
         shrubberyForm.beSigned(executor);
-
-        // Execute the form
         shrubberyForm.execute(executor);
-
-        // Verify the file was created
         std::ifstream infile("garden_shrubbery");
         if (!infile.is_open()) {
             std::cerr << "Test failed: File 'garden_shrubbery' was not created." << std::endl;
             return 1;
         }
-
-        // Verify file contents
         std::cout << "Contents of 'garden_shrubbery':" << std::endl;
         std::cout << infile.rdbuf() << std::endl;
-
-        // Close the file
         infile.close();
 
         std::cout << "Test passed: File created and contains expected content." << std::endl;
-    } catch (const std::exception &e) {
+    }
+    catch (const std::exception &e)
+    {
         std::cerr << "Test failed: " << e.what() << std::endl;
     }
-
-    return 0;
+    return (0);
 }
 

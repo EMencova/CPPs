@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:51:36 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/30 16:34:41 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/12/01 11:51:33 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,16 @@ const std::string PresidentialPardonForm::getTarget() const
 
 void	PresidentialPardonForm::execute(const Bureaucrat & executor) const
 {
-	if (!_signed)
+	if (getIfSigned() == false)
+	{
         throw AForm::FormNotSignedException();
-    else if (executor.getGrade() > getGradeExec())
-        throw AForm::GradeTooLowException(); 
-	else if (_signed == true)
-		std::cout << getTarget() << " has been pardoned." << std::endl;
-	else
-		std::cout << _name << " not signed, cannot be executed." << std::endl;
+	}
+    if (executor.getGrade() > getGradeExec())
+	{
+        throw AForm::GradeTooLowException();
+	}
+	
+	std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
 std::ostream &	operator<<(std::ostream &o, PresidentialPardonForm const &ref)

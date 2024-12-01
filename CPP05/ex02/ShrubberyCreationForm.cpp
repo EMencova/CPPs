@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:47:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/30 17:22:08 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/12/01 10:58:48 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
     if (executor.getGrade() > getGradeExec())
         throw Bureaucrat::GradeTooLowException();
-    if (!_signed)
+    if (getIfSigned() == false)
         throw AForm::FormNotSignedException();
 
     // Use _target directly if it's a string, or ensure getName() is valid
@@ -58,9 +58,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
         return;
     }
 
-    for (int i = 0; i < 3; i++)
-    {
-        outfile <<
+    outfile <<
             "         *" << std::endl <<
             "        /o/" << std::endl <<
             "       /o//o/" << std::endl <<
@@ -72,7 +70,6 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
             "        ||||" << std::endl <<
             "        ||||" << std::endl <<
             "   _____||||______" << std::endl << std::endl;
-    }
 
     outfile.close();
     std::cout << "Shrubbery created in file: " << filename << std::endl;

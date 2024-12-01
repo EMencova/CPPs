@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:52:51 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/29 17:51:09 by emencova         ###   ########.fr       */
+/*   Updated: 2024/12/01 11:47:10 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string &target): AForm("Robocop", 72,45), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string &target): AForm("RobotomyRequestForm", 72,45), _target(target)
 {
     std::cout<<"RobotomyRequestForm default contructor called."<<std::endl;
 }
@@ -37,25 +37,21 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
     
 }
 
-const std::string RobotomyRequestForm::getTarget() const
-{
-    return (_target);
-}
-
 void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
-    if (!_signed)
+    if (getIfSigned() == false)
         throw AForm::FormNotSignedException();
 
-    else if (executor.getGrade() > getGradeExec())
+    if (executor.getGrade() > getGradeExec())
         throw AForm::GradeTooLowException(); 
         
-    std::cout << "Some noise" << std::endl;
-    int nbr = rand() % 100 + 1;
-    if (nbr % 2 == 0)
-        std::cout << this->_target<< " has been robotomized." << std::endl;
+    std::cout << "Drilling noises.." << std::endl;
+    srand(time(NULL));
+    int nbr = rand() % 2;
+    if (nbr == 0)
+        std::cout << _target << " has been robotomized." << std::endl;
     else
-        std::cout << this->_target<< " was not robotomized." << std::endl;
+        std::cout << _target << " was not robotomized." << std::endl;
 }
 
 

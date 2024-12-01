@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:53:14 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 22:58:08 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/12/01 10:44:52 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 class RobotomyRequestForm : public AForm
 {
     private:
-    Bureaucrat &_target;
+    std::string &_target;
     
     public:
-    RobotomyRequestForm(Bureaucrat &target);
+    RobotomyRequestForm(std::string &target);
     ~RobotomyRequestForm();
     RobotomyRequestForm(const RobotomyRequestForm &original);
     RobotomyRequestForm &operator=(const RobotomyRequestForm &original);

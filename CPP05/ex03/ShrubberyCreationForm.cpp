@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:47:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/29 17:51:23 by emencova         ###   ########.fr       */
+/*   Updated: 2024/12/01 11:47:37 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("Money Tree", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string &target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
     std::cout<<"ShrubberyCreationForm default constructor called."<<std::endl;
 }
@@ -39,45 +39,40 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
     }
     return(*this);      
 }
-const std::string ShrubberyCreationForm::getTarget() const
-{
-    return (_target);
-}
 
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+
+void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
     if (executor.getGrade() > getGradeExec())
         throw Bureaucrat::GradeTooLowException();
-    else if (!_signed)
+    if (getIfSigned() == false)
         throw AForm::FormNotSignedException();
-    else
-    {
-        std::string filename = _target + "_shrubbery";
-        
-        std::ofstream outfile(filename.c_str());
-        if (!outfile.is_open())
-        {
-            std::cerr << "Error: Could not open or create the file: " << filename << std::endl;
-            return;
-        }
-        for (int i = 0; i < 5; i++)
-        {
-            outfile <<
-                "         *" << std::endl <<
-                "        /o/" << std::endl <<
-                "       /o//o/" << std::endl <<
-                "     /o//o//o/" << std::endl <<
-                "    /o//o//o//o/" << std::endl <<
-                "  /o//o//o//o//o/" << std::endl <<
-                " /o//o//o//o//o//o/" << std::endl <<
-                "/o//o//o//o//o//o//o/" << std::endl <<
-                "        ||||" << std::endl <<
-                "        ||||" << std::endl <<
-                "   _____||||______" << std::endl << std::endl;
-        }
 
-        outfile.close();
+    // Use _target directly if it's a string, or ensure getName() is valid
+    std::string filename = _target + "_shrubbery";
+
+    std::ofstream outfile(filename.c_str());
+    if (!outfile.is_open())
+    {
+        std::cerr << "Error: Could not open or create the file: " << filename << std::endl;
+        return;
     }
+
+    outfile <<
+            "         *" << std::endl <<
+            "        /o/" << std::endl <<
+            "       /o//o/" << std::endl <<
+            "     /o//o//o/" << std::endl <<
+            "    /o//o//o//o/" << std::endl <<
+            "  /o//o//o//o//o/" << std::endl <<
+            " /o//o//o//o//o//o/" << std::endl <<
+            "/o//o//o//o//o//o//o/" << std::endl <<
+            "        ||||" << std::endl <<
+            "        ||||" << std::endl <<
+            "   _____||||______" << std::endl << std::endl;
+
+    outfile.close();
+    std::cout << "Shrubbery created in file: " << filename << std::endl;
 }
 
 

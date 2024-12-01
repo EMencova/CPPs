@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:53:14 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/29 17:51:16 by emencova         ###   ########.fr       */
+/*   Updated: 2024/12/01 11:47:16 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,15 @@
 class RobotomyRequestForm : public AForm
 {
     private:
-    std::string _target;
+    std::string &_target;
     
     public:
-    RobotomyRequestForm(const std::string &target);
+    RobotomyRequestForm(std::string &target);
     ~RobotomyRequestForm();
     RobotomyRequestForm(const RobotomyRequestForm &original);
     RobotomyRequestForm &operator=(const RobotomyRequestForm &original);
 
     void     execute(const Bureaucrat & executor) const;
-    const std::string getTarget() const;
     
 };
 

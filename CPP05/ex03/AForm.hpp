@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:48:55 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/30 15:25:19 by emencova         ###   ########.fr       */
+/*   Updated: 2024/12/01 10:31:58 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class Bureaucrat;
 class AForm
 {
-    protected:
+    private:
         const std::string _name;
         bool    _signed;
         const unsigned int _grade_sign;
@@ -35,8 +35,9 @@ class AForm
         std::string getName() const;
         int     getGradeSign() const;
         unsigned int     getGradeExec() const;
+        bool    getIfSigned() const;
         void   beSigned(Bureaucrat &p);
-        virtual void     execute(const Bureaucrat & executor) const = 0;
+        virtual void     execute(Bureaucrat const & executor) const = 0;
         
 
 

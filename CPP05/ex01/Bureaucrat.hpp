@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:26 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/30 11:07:38 by emencova         ###   ########.fr       */
+/*   Updated: 2024/12/01 09:36:40 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class Bureaucrat
             public:
                 const char *what() const throw()
                 {
-                    return ("Grade is too low, 150 is mininum!");
+                    return ("Grade is too low!");
                 }
         };
         
@@ -49,7 +49,7 @@ class Bureaucrat
             public:
                 const char *what() const throw()
                 {
-                    return ("Grade is too high, 1 is maximum!");
+                    return ("Grade is too high!");
                 }
         };
 };
