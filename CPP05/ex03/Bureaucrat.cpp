@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:29 by emencova          #+#    #+#             */
-/*   Updated: 2024/11/28 22:52:21 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/12/01 13:10:26 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ Bureaucrat::~Bureaucrat()
     std::cout<<"Bureaucrat "<<_name<<" destructor called."<<std::endl;
 }
 
-std::string Bureaucrat::getName()
+std::string Bureaucrat::getName() const
 {
     return (_name);
 }

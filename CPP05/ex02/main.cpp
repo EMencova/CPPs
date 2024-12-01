@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emencova <emencova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:24:22 by emencova          #+#    #+#             */
-/*   Updated: 2024/12/01 10:59:21 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/12/01 13:13:53 by emencova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
+
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
@@ -50,7 +50,7 @@ int	main()
 }
 
 
-*/
+/*
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
@@ -84,3 +84,4 @@ int main() {
     return (0);
 }
 
+*/
