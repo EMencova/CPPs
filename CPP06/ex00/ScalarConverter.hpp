@@ -14,6 +14,13 @@
 # define SCALARCONVERTER_HPP
 
 # include <iostream>
+# include <cstdlib>
+# include <string>
+# include <iomanip>
+# include <climits>
+# include <limits>
+# include <cfloat>
+# include <cstdio>
 
 class ScalarConverter
 {
@@ -24,8 +31,18 @@ class ScalarConverter
     ~ScalarConverter();
 
     public:
-    static void convert(std::string &input);
-    
+    static void convert(std::string input);
+    static void convertChar(std::string c);
+    static void convertInt(std::string input);
+    static void convertFloat(std::string input);
+    static void convertDouble(std::string input);
+    static void checkInfmin();
+    static void checkInfmax();
+    static void checkNan();
+    static void checkError();
+    static void checkAll(std::string input);
+    static void handleZero();
+
 };
 
 #endif
