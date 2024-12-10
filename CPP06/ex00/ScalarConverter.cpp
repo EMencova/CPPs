@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 15:32:46 by emencova          #+#    #+#             */
-/*   Updated: 2024/12/10 21:23:02 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/12/10 21:29:10 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void ScalarConverter::checkRangeDouble(std::string input)
         std::cout<<"Double: "<<std::fixed<<std::setprecision(2)<<static_cast<double>(nbr)<<std::endl;
 }
 
-void ScalarConverter::convertChar(std::string input) // if number it doesnt show ascii but the number
+void ScalarConverter::convertChar(std::string input)
 {
     int nbr = static_cast<int>(input[0]);
     int n = atoi(input.c_str());
