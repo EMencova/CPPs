@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 15:32:46 by emencova          #+#    #+#             */
-/*   Updated: 2024/12/01 21:37:37 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/12/10 09:42:03 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,27 @@ class ScalarConverter
     static void checkNan();
     static void checkError();
     static void checkAll(std::string input);
-    static void handleZero();
+    static void checkRange(std::string input);
+    static void checkChar(std::string input);
 
+    class Impossible: public std::exception
+    {
+        public:
+            const char *what() const throw()
+            {
+                return ("impossible");
+            }
+        
+    };
+    class OutOfRange: public std::exception
+    {
+        public:
+            const char *what() const throw()
+            {
+                return ("out of range");
+            }
+        
+    };
 };
 
 #endif
