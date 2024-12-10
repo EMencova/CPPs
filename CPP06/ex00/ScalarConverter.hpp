@@ -41,7 +41,8 @@ class ScalarConverter
     static void checkNan();
     static void checkError();
     static void checkAll(std::string input);
-    static void checkRange(std::string input);
+    static void checkRangeInt(std::string input);
+    static void checkRangeOther(std::string input);
     static void checkChar(std::string input);
 
     class Impossible: public std::exception
@@ -53,6 +54,7 @@ class ScalarConverter
             }
         
     };
+
     class OutOfRange: public std::exception
     {
         public:

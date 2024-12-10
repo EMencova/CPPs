@@ -27,28 +27,54 @@ ScalarConverter::~ScalarConverter(){}
 void ScalarConverter::checkChar(std::string input)
 {
     int nbr = atoi(input.c_str());
-    if (nbr <= 0 || nbr >= 127)
+    if (nbr <= 0 || nbr >= 127 )
         throw ScalarConverter::Impossible();
 }
 
         
-void ScalarConverter::checkRange(std::string input)
+void ScalarConverter::checkRangeInt(std::string input)
 {
     long long nbr = atol(input.c_str());
     if (nbr < INT_MIN || nbr > INT_MAX)
         throw ScalarConverter::OutOfRange();
-    else if (nbr < -FLT_MIN || nbr > FLT_MAX)
-        throw ScalarConverter::OutOfRange();
-    else if (nbr < -DBL_MIN || nbr > DBL_MAX)
-        throw ScalarConverter::OutOfRange();
 }
 
-void ScalarConverter::convertChar(std::string input)
+void ScalarConverter::checkRangeOther(std::string input)
 {
-    char c = input[0];
-    int nbr = static_cast<int>(c);
-    
-    std::cout<<"Char: "<<c<<std::endl;
+    long double nbr = atof(input.c_str());
+    if (nbr < -FLT_MAX)
+    {
+        std::cout << "nbr, FLT_MIN: " << nbr << " " << FLT_MIN << std::endl;
+        std::cout<<"Float: -inff"<<std::endl;
+    }
+    else if (nbr > FLT_MAX)
+    {
+        std::cout<<"Float: +inff"<<std::endl;
+    }
+    else
+        std::cout<<"Float: "<<std::fixed<<std::setprecision(2)<<static_cast<float>(nbr)<<"f"<<std::endl;
+    if (nbr < -DBL_MAX)
+    {
+        std::cout<<"Double: -inf"<<std::endl;
+    }
+    else if (nbr > DBL_MAX)
+    {
+        std::cout<<"Double: +inf"<<std::endl;
+    }
+    else
+        std::cout<<"Double: "<<std::fixed<<std::setprecision(2)<<static_cast<double>(nbr)<<std::endl;
+}
+
+void ScalarConverter::convertChar(std::string input) // if number it doesnt show ascii but the number
+{
+    int nbr = static_cast<int>(input[0]);
+    int n = atoi(input.c_str());
+    if (input.length() == 1 && !std::isdigit(input[0]))
+        std::cout<<"Char: "<<input[0]<<std::endl;
+    else
+    {
+        std::cout<<"Char: "<<n<<std::endl;
+    }
     std::cout<<"Int: "<<nbr<<std::endl;
     std::cout<<"Float: "<<std::fixed<<std::setprecision(2)<<static_cast<float>(nbr)<<"f"<<std::endl;
     std::cout<<"Double: "<<std::fixed<<std::setprecision(2)<<static_cast<double>(nbr)<<std::endl;
@@ -69,41 +95,60 @@ void ScalarConverter::convertInt(std::string input)
     }
     try
     {
-        checkRange(input);
+        checkRangeInt(input);
         std::cout<<"Int: "<< nbr <<std::endl;
-        std::cout<<"Float: "<<std::fixed<<std::setprecision(2)<<static_cast<float>(nbr)<<"f"<<std::endl;
-        std::cout<<"Double: "<<std::fixed<<std::setprecision(2)<<static_cast<double>(nbr)<<std::endl;
     }
     catch (const ScalarConverter::OutOfRange &e)
     {
         std::cout << "Int: " << e.what() << std::endl;
-        std::cout << "Float: " << e.what() << std::endl;
-        std::cout << "Double: " << e.what() << std::endl;
     }
+    checkRangeOther(input);
 }
 
 void ScalarConverter::convertFloat(std::string input)
 {
-    float nbr = atof(input.c_str());
-    if (nbr <= 0 || nbr >= 127)
-        std::cout<<"Char: impossible"<<std::endl;
+    long long n = atol(input.c_str());
+    try
+    {
+        checkChar(input);
+        std::cout<<"Char: "<<static_cast<char>(input[0])<<std::endl;
+        
+    }
+    catch (const ScalarConverter::Impossible &e)
+    {
+        std::cout << "Char: " << e.what() << std::endl;
+    }
+    if (n >= INT_MAX || n < INT_MIN)
+        std::cout<<"Int: out of range"<<std::endl;
     else
-        std::cout<<"Char :"<<static_cast<char>(nbr)<<std::endl;
-    std::cout<<"Int: "<<static_cast<int>(nbr)<<std::endl;
-    std::cout<<"Float: "<<std::fixed<<std::setprecision(2)<<static_cast<float>(nbr)<<"f"<<std::endl;
-    std::cout<<"Double: "<<std::fixed<<std::setprecision(2)<<static_cast<double>(nbr)<<std::endl;
+        std::cout<<"Int: "<< n <<std::endl;
+    checkRangeOther(input);
 }
+
 
 void ScalarConverter::convertDouble(std::string input)
 {
-    double nbr = atof(input.c_str());
-    if (nbr <= 0 || nbr >= 127)
-        std::cout<<"Char: non displayable"<<std::endl;
-    else
-        std::cout<<"Char : "<<static_cast<char>(nbr)<<std::endl;
-    std::cout<<"Int: "<<static_cast<int>(nbr)<<std::endl;
-    std::cout<<"Float: "<<std::fixed<<std::setprecision(2)<<static_cast<float>(nbr)<<"f"<<std::endl;
-    std::cout<<"Double: "<<std::fixed<<std::setprecision(2)<<nbr<<std::endl;
+    long long n = atol(input.c_str());
+    try
+    {
+        checkChar(input);
+        std::cout<<"Char : "<<static_cast<char>(input[0])<<std::endl;
+        
+    }
+    catch (const ScalarConverter::Impossible &e)
+    {
+        std::cout << "Char: " << e.what() << std::endl;
+    }
+    try
+    {
+        checkRangeInt(input);
+        std::cout<<"Int: "<< n <<std::endl;
+    }
+    catch (const ScalarConverter::OutOfRange &e)
+    {
+        std::cout << "Int: " << e.what() << std::endl;
+    }
+    checkRangeOther(input);
 }
 
 void ScalarConverter::checkInfmin()
