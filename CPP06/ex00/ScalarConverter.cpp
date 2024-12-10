@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 15:32:46 by emencova          #+#    #+#             */
-/*   Updated: 2024/12/10 09:55:08 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/12/10 21:23:02 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &original)
 }
 ScalarConverter::~ScalarConverter(){}
 
+
 void ScalarConverter::checkChar(std::string input)
 {
-    int nbr = atoi(input.c_str());
+    int nbr = atof(input.c_str());
     if (nbr <= 0 || nbr >= 127 )
         throw ScalarConverter::Impossible();
 }
@@ -39,20 +40,30 @@ void ScalarConverter::checkRangeInt(std::string input)
         throw ScalarConverter::OutOfRange();
 }
 
-void ScalarConverter::checkRangeOther(std::string input)
+void ScalarConverter::checkRangeFloat(std::string input)
 {
-    long double nbr = atof(input.c_str());
-    if (nbr < -FLT_MAX)
+    long double nbr = strtof(input.c_str(), NULL);
+
+    if (nbr < -std::numeric_limits<float>::max())
     {
-        std::cout << "nbr, FLT_MIN: " << nbr << " " << FLT_MIN << std::endl;
         std::cout<<"Float: -inff"<<std::endl;
     }
-    else if (nbr > FLT_MAX)
+    else if (nbr > std::numeric_limits<float>::max())
     {
         std::cout<<"Float: +inff"<<std::endl;
     }
     else
+    {
         std::cout<<"Float: "<<std::fixed<<std::setprecision(2)<<static_cast<float>(nbr)<<"f"<<std::endl;
+    }
+}
+
+
+
+void ScalarConverter::checkRangeDouble(std::string input)
+{
+    long double nbr = std::strtod(input.c_str(), NULL);
+
     if (nbr < -DBL_MAX)
     {
         std::cout<<"Double: -inf"<<std::endl;
@@ -86,7 +97,7 @@ void ScalarConverter::convertInt(std::string input)
     try
     {
         checkChar(input);
-        std::cout<<"Char : "<<static_cast<char>(input[0])<<std::endl;
+        std::cout<<"Char: "<<static_cast<char>(nbr)<<std::endl;
         
     }
     catch (const ScalarConverter::Impossible &e)
@@ -102,7 +113,8 @@ void ScalarConverter::convertInt(std::string input)
     {
         std::cout << "Int: " << e.what() << std::endl;
     }
-    checkRangeOther(input);
+    checkRangeFloat(input);
+    checkRangeDouble(input);
 }
 
 void ScalarConverter::convertFloat(std::string input)
@@ -111,8 +123,32 @@ void ScalarConverter::convertFloat(std::string input)
     try
     {
         checkChar(input);
-        std::cout<<"Char: "<<static_cast<char>(input[0])<<std::endl;
-        
+        unsigned int i = 0;
+        bool iswhole = true;
+        while (i < input.length() - 1 && (input[i] == '.' || std::isdigit(input[i])))
+        {
+            if (input[i] == '.')
+            {
+                if (i + 2 == input.length() && input[i + 1] == 'f')
+                {
+                    iswhole = true;
+                    break;
+                }
+                while(input[i] != 'f')
+                {
+                    if (input[i] != '0')
+                        iswhole = false;
+                    else
+                        iswhole = true;
+                    i++;
+                }
+            }
+            i++;
+        }
+        if (iswhole == false)
+            std::cout<<"Char: impossible"<<std::endl;
+        else
+            std::cout<<"Char: "<<static_cast<char>(n)<<std::endl;  
     }
     catch (const ScalarConverter::Impossible &e)
     {
@@ -122,7 +158,8 @@ void ScalarConverter::convertFloat(std::string input)
         std::cout<<"Int: out of range"<<std::endl;
     else
         std::cout<<"Int: "<< n <<std::endl;
-    checkRangeOther(input);
+    checkRangeFloat(input);
+    checkRangeDouble(input);
 }
 
 
@@ -133,7 +170,6 @@ void ScalarConverter::convertDouble(std::string input)
     {
         checkChar(input);
         std::cout<<"Char : "<<static_cast<char>(input[0])<<std::endl;
-        
     }
     catch (const ScalarConverter::Impossible &e)
     {
@@ -148,7 +184,8 @@ void ScalarConverter::convertDouble(std::string input)
     {
         std::cout << "Int: " << e.what() << std::endl;
     }
-    checkRangeOther(input);
+    checkRangeFloat(input);
+    checkRangeDouble(input);
 }
 
 void ScalarConverter::checkInfmin()
@@ -203,7 +240,9 @@ void ScalarConverter::checkAll(std::string input)
         while (i < input.length() - 1 && (input[i] == '.' || std::isdigit(input[i])))
         {
             if (input[i] == '.')
+            {
                 isdecimal = true;
+            }
             i++;
         }
         if (i == input.length() - 1 && isdecimal)
