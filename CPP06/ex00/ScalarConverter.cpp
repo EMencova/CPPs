@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 15:32:46 by emencova          #+#    #+#             */
-/*   Updated: 2024/12/10 23:00:30 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/12/11 21:38:53 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ ScalarConverter::~ScalarConverter(){}
 
 void ScalarConverter::checkChar(std::string input)
 {
-    int nbr = atof(input.c_str());
+    int nbr = atoi(input.c_str());
     if (nbr <= 0 || nbr >= 127 )
         throw ScalarConverter::Impossible();
 }
@@ -37,22 +37,17 @@ void ScalarConverter::checkRangeInt(std::string input)
 {
     long long nbr = atol(input.c_str());
     if (nbr < INT_MIN || nbr > INT_MAX)
-        throw ScalarConverter::OutOfRange();
+        throw ScalarConverter::Impossible();
 }
 
 int ScalarConverter::checkRangeFloat(std::string input)
 {
     long double nbr = strtof(input.c_str(), NULL);
 
-    if (nbr < -std::numeric_limits<float>::max())
+    if (nbr < -std::numeric_limits<float>::max() || nbr > std::numeric_limits<float>::max())
     {
         std::cout<<"Float: impossible"<<std::endl;
         return (0);
-    }
-    else if (nbr > std::numeric_limits<float>::max())
-    {
-        std::cout<<"Float: impossible"<<std::endl;
-        return(0);
     }
     else
     {
@@ -61,20 +56,12 @@ int ScalarConverter::checkRangeFloat(std::string input)
     }
 }
 
-
-
 void ScalarConverter::checkRangeDouble(std::string input)
 {
     long double nbr = std::strtod(input.c_str(), NULL);
 
-    if (nbr < -DBL_MAX)
-    {
+    if (nbr < -DBL_MAX || nbr > DBL_MAX)
         std::cout<<"Double: impossible"<<std::endl;
-    }
-    else if (nbr > DBL_MAX)
-    {
-        std::cout<<"Double: impossible"<<std::endl;
-    }
     else
         std::cout<<"Double: "<<std::fixed<<std::setprecision(2)<<static_cast<double>(nbr)<<std::endl;
 }
@@ -122,7 +109,7 @@ void ScalarConverter::convertInt(std::string input)
        
 }
 
-void ScalarConverter::convertFloat(std::string input) ///needs to change for char impossible or if 00 is possible otherwise no
+void ScalarConverter::convertFloat(std::string input)
 {
     long long n = atol(input.c_str());
     try
@@ -130,21 +117,18 @@ void ScalarConverter::convertFloat(std::string input) ///needs to change for cha
         checkChar(input);
         unsigned int i = 0;
         bool iswhole = true;
-        while (i < input.length() - 1 && (input[i] == '.' || std::isdigit(input[i])))
+        while (i < input.length() - 1 && (input[i] == '.' || std::isdigit(input[i]) || input[i] == 'f'))
         {
             if (input[i] == '.')
             {
-                if (i + 2 == input.length() && input[i + 1] == 'f')
-                {
-                    iswhole = true;
-                    break;
-                }
-                while(input[i] != 'f')
+                i++;
+                while (i < input.length() - 1 && input[i] != 'f')
                 {
                     if (input[i] != '0')
+                    {
                         iswhole = false;
-                    else
-                        iswhole = true;
+                        break;
+                    }
                     i++;
                 }
             }
@@ -170,7 +154,7 @@ void ScalarConverter::convertFloat(std::string input) ///needs to change for cha
 }
 
 
-void ScalarConverter::convertDouble(std::string input) // also need to change for char impossible otherwsie 00 is ok no 00 is not
+void ScalarConverter::convertDouble(std::string input)
 {
     long long n = atol(input.c_str());
     try
@@ -178,16 +162,18 @@ void ScalarConverter::convertDouble(std::string input) // also need to change fo
         checkChar(input);
         unsigned int i = 0;
         bool iswhole = true;
-        while (i < input.length() - 1 && (input[i] == '.' || std::isdigit(input[i])))
+        while (i < input.length())
         {
             if (input[i] == '.')
             {
-                while(input[i])
+                i++;
+                while(i < input.length())
                 {
                     if (input[i] != '0')
+                    {
                         iswhole = false;
-                    else
-                        iswhole = true;
+                        break;
+                    }
                     i++;
                 }
             }
@@ -207,7 +193,7 @@ void ScalarConverter::convertDouble(std::string input) // also need to change fo
         checkRangeInt(input);
         std::cout<<"Int: "<< n <<std::endl;
     }
-    catch (const ScalarConverter::OutOfRange &e)
+    catch (const ScalarConverter::Impossible &e)
     {
         std::cout << "Int: " << e.what() << std::endl;
     }
