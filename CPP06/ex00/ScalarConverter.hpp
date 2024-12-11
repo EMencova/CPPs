@@ -42,7 +42,7 @@ class ScalarConverter
     static void checkError();
     static void checkAll(std::string input);
     static void checkRangeInt(std::string input);
-    static void checkRangeFloat(std::string input);
+    static int checkRangeFloat(std::string input);
     static void checkRangeDouble(std::string input);
     static void checkChar(std::string input);
 
@@ -61,7 +61,7 @@ class ScalarConverter
         public:
             const char *what() const throw()
             {
-                return ("out of range");
+                return ("impossible");
             }
         
     };

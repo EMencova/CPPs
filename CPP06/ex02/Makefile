@@ -3,22 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+         #
+#    By: emencova <emencova@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/07 15:32:46 by emencova          #+#    #+#              #
-#    Updated: 2024/12/10 21:41:39 by eliskam          ###   ########.fr        #
+#    Updated: 2024/12/11 14:21:47 by emencova         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Serializer
+NAME = Base
 
 CC = c++
 
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC = main.cpp \
-	Serializer.cpp \
-	Data.cpp \
+	Base.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

@@ -40,21 +40,24 @@ void ScalarConverter::checkRangeInt(std::string input)
         throw ScalarConverter::OutOfRange();
 }
 
-void ScalarConverter::checkRangeFloat(std::string input)
+int ScalarConverter::checkRangeFloat(std::string input)
 {
     long double nbr = strtof(input.c_str(), NULL);
 
     if (nbr < -std::numeric_limits<float>::max())
     {
-        std::cout<<"Float: -inff"<<std::endl;
+        std::cout<<"Float: impossible"<<std::endl;
+        return (0);
     }
     else if (nbr > std::numeric_limits<float>::max())
     {
-        std::cout<<"Float: +inff"<<std::endl;
+        std::cout<<"Float: impossible"<<std::endl;
+        return(0);
     }
     else
     {
         std::cout<<"Float: "<<std::fixed<<std::setprecision(2)<<static_cast<float>(nbr)<<"f"<<std::endl;
+        return(1);
     }
 }
 
@@ -66,11 +69,11 @@ void ScalarConverter::checkRangeDouble(std::string input)
 
     if (nbr < -DBL_MAX)
     {
-        std::cout<<"Double: -inf"<<std::endl;
+        std::cout<<"Double: impossible"<<std::endl;
     }
     else if (nbr > DBL_MAX)
     {
-        std::cout<<"Double: +inf"<<std::endl;
+        std::cout<<"Double: impossible"<<std::endl;
     }
     else
         std::cout<<"Double: "<<std::fixed<<std::setprecision(2)<<static_cast<double>(nbr)<<std::endl;
@@ -104,20 +107,22 @@ void ScalarConverter::convertInt(std::string input)
     {
         std::cout << "Char: " << e.what() << std::endl;
     }
-    try
+    if(nbr < INT_MIN || nbr > INT_MAX)
     {
-        checkRangeInt(input);
+        std::cout<<"Int: impossible"<<std::endl;
+        std::cout<<"Float: impossible"<<std::endl;
+        std::cout<<"Double: impossible"<<std::endl;
+    }
+    else
+    {
         std::cout<<"Int: "<< nbr <<std::endl;
+        std::cout<<"Float: "<<std::fixed<<std::setprecision(2)<<static_cast<float>(nbr)<<"f"<<std::endl;
+        std::cout<<"Double: "<<std::fixed<<std::setprecision(2)<<static_cast<double>(nbr)<<std::endl;
     }
-    catch (const ScalarConverter::OutOfRange &e)
-    {
-        std::cout << "Int: " << e.what() << std::endl;
-    }
-    checkRangeFloat(input);
-    checkRangeDouble(input);
+       
 }
 
-void ScalarConverter::convertFloat(std::string input)
+void ScalarConverter::convertFloat(std::string input) ///needs to change for char impossible or if 00 is possible otherwise no
 {
     long long n = atol(input.c_str());
     try
@@ -155,21 +160,43 @@ void ScalarConverter::convertFloat(std::string input)
         std::cout << "Char: " << e.what() << std::endl;
     }
     if (n >= INT_MAX || n < INT_MIN)
-        std::cout<<"Int: out of range"<<std::endl;
+        std::cout<<"Int: impossible"<<std::endl;
     else
         std::cout<<"Int: "<< n <<std::endl;
-    checkRangeFloat(input);
-    checkRangeDouble(input);
+    if (checkRangeFloat(input) == 0)
+        std::cout<<"Double: impossible"<<std::endl;
+    else
+        checkRangeDouble(input);
 }
 
 
-void ScalarConverter::convertDouble(std::string input)
+void ScalarConverter::convertDouble(std::string input) // also need to change for char impossible otherwsie 00 is ok no 00 is not
 {
     long long n = atol(input.c_str());
     try
     {
         checkChar(input);
-        std::cout<<"Char : "<<static_cast<char>(input[0])<<std::endl;
+        unsigned int i = 0;
+        bool iswhole = true;
+        while (i < input.length() - 1 && (input[i] == '.' || std::isdigit(input[i])))
+        {
+            if (input[i] == '.')
+            {
+                while(input[i])
+                {
+                    if (input[i] != '0')
+                        iswhole = false;
+                    else
+                        iswhole = true;
+                    i++;
+                }
+            }
+            i++;
+        }
+        if (iswhole == false)
+            std::cout<<"Char: impossible"<<std::endl;
+        else
+            std::cout<<"Char: "<<static_cast<char>(n)<<std::endl; 
     }
     catch (const ScalarConverter::Impossible &e)
     {
