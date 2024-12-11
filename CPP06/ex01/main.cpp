@@ -12,3 +12,21 @@
 
 #include "Serializer.hpp"
 
+int main()
+{
+    Data *		data = new Data;
+	uintptr_t	ptr;
+
+	std::cout << data << std::endl;
+
+	ptr = Serializer::serialize(data);
+
+	std::cout << ptr << std::endl;
+
+	data = Serializer::deserialize(ptr);
+
+	std::cout << data << std::endl;
+
+	delete data;
+	return (0);
+}

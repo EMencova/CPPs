@@ -14,10 +14,22 @@
 # define DATA_HPP
 
 # include <iostream>
+
 struct Data
 {
-    int value;  
-};
+    private:
+        int _value;
+
+    public:
+        Data();
+        ~Data();
+        Data(const Data &original);
+        Data &operator=(const Data &original);
+
+        int getValue() const;
+};  
+
+std::ostream &operator<<(std::ostream &out, Data const &original);
 
 
 #endif
