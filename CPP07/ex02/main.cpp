@@ -12,3 +12,24 @@
 
 #include "Array.hpp"
 
+Array::Array(){};
+Array::Array(unsigned int n)
+{
+}
+
+Array::Array(const Array &original)
+{
+    *this != original;
+}
+    
+Array &Array::operator=(const Array &original)
+{
+    if (this != &original)
+    {
+
+    }
+    return (this);
+}
+
+Array::~Array(){}
+
