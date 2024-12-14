@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 15:32:46 by emencova          #+#    #+#             */
-/*   Updated: 2024/12/13 16:24:55 by eliskam          ###   ########.fr       */
+/*   Updated: 2024/12/14 11:56:06 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WHATEVER_HPP
-# define WHATEVER_HPP
+#ifndef ITER_HPP
+# define ITER_HPP
 
-#include <iostream>
 
-template <typename T>
-
-void swap(T &a, T &b)
-{
-    T temp;
-
-    temp = a;
-    a = b;
-    b = temp;
-}
+# include <iostream>
+# include <string>
 
 template <typename T>
 
-T const &min(T &a, T &b)
+void iter(T *array, size_t len, void (*f)(T&))
 {
-    return ((a < b) ? a : b);
+    if (array == NULL || f == NULL)
+		return ;
+	for (size_t i = 0; i < len; i++)
+		f(array[i]);
 }
 
-template <typename T>
 
-T const &max (T &a, T &b)
-{
-    return ((a > b) ? a : b);
-}
+
 
 #endif
