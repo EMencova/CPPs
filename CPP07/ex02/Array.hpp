@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          #+#  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-12-14 16:29:29 by emencova          #+#    #+#             */
-/*   Updated: 2024-12-14 16:29:29 by emencova         ###   ########.fr       */
+/*   Created: 2024/12/14 16:29:29 by emencova          #+#    #+#             */
+/*   Updated: 2024/12/15 12:25:26 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
+
+# include <string>
+# include <iostream>
+# include <cstdlib>
+# include <exception>
+
 
 template <typename T>
 
@@ -19,7 +25,7 @@ class Array
 {
     private:
         T* _array;
-        int _size;
+        unsigned int _size;
 
     public:
         Array();
@@ -27,6 +33,10 @@ class Array
         Array(const Array &original);
         Array &operator=(const Array &original);
         ~Array();
+        
+        unsigned int size(void) const;
+        T& operator[](unsigned int idx) const;
+        
 
     class OutOfBonds : public std::exception
     {
@@ -37,9 +47,8 @@ class Array
         }
 
     };
-
-
-
 };
+
+# include "Array.tpp"
 
 #endif

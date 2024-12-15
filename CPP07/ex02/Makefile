@@ -6,11 +6,11 @@
 #    By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/07 15:32:46 by emencova          #+#    #+#              #
-#    Updated: 2024/12/13 16:32:23 by eliskam          ###   ########.fr        #
+#    Updated: 2024/12/15 12:26:37 by eliskam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = whatever
+NAME = array
 
 CC = c++
 
