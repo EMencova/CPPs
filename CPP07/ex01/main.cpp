@@ -88,6 +88,5 @@ int main()
     for (size_t i = 0; i < slen; i++)
     {
         print_temp(sarray[i]);
-    }
-    
+    }  
 }
