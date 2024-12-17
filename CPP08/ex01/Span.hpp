@@ -14,15 +14,28 @@
 # define SPAN_HPP
 
 # include <iostream>
+# include <exception>
+# include <list>
+# include <algorithm>
+# include <iterator>
 
 class Span
 {
     private:
-        
+        unsigned int _n;
+        std::list<int>nums;
 
     public:
+        Span();
+        Span(unsigned int n);
+        Span(const Span &original);
+        Span &operator=(const Span &original);
+        ~Span();
 
-
+        void addNumber(int nbr);
+        void display();
+        unsigned int shortestSpan() const;
+        unsigned int longestSpan() const;
 };
 
 
