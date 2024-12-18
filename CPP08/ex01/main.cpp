@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          #+#  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-12-16 14:58:18 by emencova          #+#    #+#             */
-/*   Updated: 2024-12-16 14:58:18 by emencova         ###   ########.fr       */
+/*   Created: 2024/12/16 14:58:18 by emencova          #+#    #+#             */
+/*   Updated: 2024/12/18 00:03:46 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+
 
 int main()
 {
@@ -23,7 +24,7 @@ int main()
         a.addNumber(11);
         a.addNumber(30);
         a.addNumber(9);
-        //a.addNumber(10);
+        //a.addNumber(35); //out of range
         std::cout<<"Numbers inside the container are:\n "<<std::endl;
         a.display();
     }
@@ -65,5 +66,35 @@ int main()
     {
         std::cout<<e.what()<<std::endl;
     }
-
+    try
+    {
+        std::cout<<"__________________________"<<std::endl;
+        std::cout<<std::endl;
+        std::cout<<"Adding range of numbers: "<<std::endl; 
+        Span b(5);
+        b.addRange(3,7);
+        b.display();
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
 }
+
+/*
+
+///MAIN FROM SUBJECT
+
+int main()
+{
+    Span sp = Span(5);
+    sp.addNumber(6);
+    sp.addNumber(3);
+    sp.addNumber(17);
+    sp.addNumber(9);
+    sp.addNumber(11);
+    std::cout << sp.shortestSpan() << std::endl;
+    std::cout << sp.longestSpan() << std::endl;
+    return 0;
+}*/

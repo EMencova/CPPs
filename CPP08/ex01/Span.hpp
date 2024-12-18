@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          #+#  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-12-16 15:01:09 by emencova          #+#    #+#             */
-/*   Updated: 2024-12-16 15:01:09 by emencova         ###   ########.fr       */
+/*   Created: 2024/12/16 15:01:09 by emencova          #+#    #+#             */
+/*   Updated: 2024/12/18 00:03:27 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <list>
 # include <algorithm>
 # include <iterator>
+# include <climits>
 
 class Span
 {
@@ -36,6 +37,18 @@ class Span
         void display();
         unsigned int shortestSpan() const;
         unsigned int longestSpan() const;
+        
+        template <typename It>
+        void addRange(It begin, It end)
+        {
+            while(true)
+            {
+                addNumber(begin);
+                if (begin == end)
+                    break;
+                begin++;
+            }
+        }
 };
 
 

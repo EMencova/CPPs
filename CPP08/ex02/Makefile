@@ -6,18 +6,17 @@
 #    By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/07 15:32:46 by emencova          #+#    #+#              #
-#    Updated: 2024/12/18 00:05:10 by eliskam          ###   ########.fr        #
+#    Updated: 2024/12/18 00:06:41 by eliskam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = easyfind
+NAME = mutant
 
 CC = c++
 
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC = main.cpp \
-
 
 OBJ = $(SRC:.cpp=.o)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emencova <emencova@student.42.fr>          #+#  +:+       +#+        */
+/*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-12-16 15:01:15 by emencova          #+#    #+#             */
-/*   Updated: 2024-12-16 15:01:15 by emencova         ###   ########.fr       */
+/*   Created: 2024/12/16 15:01:15 by emencova          #+#    #+#             */
+/*   Updated: 2024/12/17 23:53:15 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,15 @@ unsigned int Span::shortestSpan() const
         throw std::out_of_range("Not enough numbers.");
     std::list<int>sorted =  nums;
     sorted.sort();
-    
+    unsigned int min = UINT_MAX;;
+    for (std::list<int>::iterator it = sorted.begin(); it != sorted.end(); ++it)
+    {
+        std::list<int>::iterator nextIt = it;
+        nextIt++;
+        unsigned int diff = static_cast<unsigned int>(*nextIt - *it);
+        if (diff < min)
+            min = diff;
+    }
     return(min);
 }
 
@@ -70,3 +78,4 @@ unsigned int Span::longestSpan() const
 
     return (max - min);
 }
+
