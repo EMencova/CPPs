@@ -10,24 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "MutantStack.hpp"
+
 
 template <typename T>
 
-MutantStack::MutantStack(): std::stack<T>()
-{   
-}
+MutantStack<T> :: MutantStack(): std::stack<T>(){}
 
 template <typename T>
 
-MutantStack::MutantStack(const MutantStack &original)
+MutantStack<T>::MutantStack(const MutantStack &original)
 {
     MutantStack::operator=(original);
 }
 
 template <typename T>
 
-MutantStack &MutantStack::operator=(const MutantStack &original)
+MutantStack<T> &MutantStack<T>::operator=(const MutantStack<T> &original)
 {
     if (this == &original)
         return (*this);
@@ -38,30 +36,39 @@ MutantStack &MutantStack::operator=(const MutantStack &original)
 
 template <typename T>
 
-MutantStack::~MutantStack(){};
+MutantStack<T>::~MutantStack(){};
 
 template <typename T>
 
-int MutantStack::getSize() const
+unsigned int MutantStack<T>::getSize() const
 {
-    return (std::stack<T>.size());
+    return this->std::stack<T>.size();
 }
 
-MutantStack::iterator begin()
+template <typename T>
+
+typename std::deque<T>::iterator MutantStack<T>::begin()
 {
-    return(c.begin());
-}
-MutantStack::iterator end()
-{
-    return(c.end());
+    return(this->c.begin());
 }
 
-MutantStack::const_iterator begin() const
+template <typename T>
+
+typename std::deque<T>::iterator MutantStack<T>::end()
 {
-     return(c.begin());
+    return(this->c.end());
 }
 
-MutantStack::const_iterator end()
+template <typename T>
+
+typename std::deque<T>::const_iterator MutantStack<T>::begin() const
 {
-    return(c.end());
+     return(this->c.begin());
+}
+
+template <typename T>
+
+typename std::deque<T>::const_iterator MutantStack<T>::end() const
+{
+    return(this->c.end());
 }

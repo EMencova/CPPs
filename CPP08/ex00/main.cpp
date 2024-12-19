@@ -21,7 +21,7 @@ int main()
     int arr[]= {1,2,3,4,5,6,7,8};
     std::vector<int>nbr(arr, arr + sizeof(arr)/sizeof(arr[0]));
     std::list<int>nblist(arr, arr + sizeof(arr)/sizeof(arr[0]));
-    std::deque<int>nbdeque(arr, arr + sizeof(arr)/sizeof(arr[0]));
+    std::deque<int>nbdeque(arr, arr + 5);
     
     std::cout<<"Testing vector.."<<std::endl;
     std::cout<<std::endl;
@@ -29,7 +29,7 @@ int main()
     {
         easyfind(nbr,4);
         easyfind(nbr,6);
-        easyfind(nbr,10);
+        easyfind(nbr,8);
     }
     catch(const std::exception &e)
     {
@@ -55,8 +55,8 @@ int main()
     std::cout<<std::endl;
     try
     {
+        easyfind(nbdeque,5);
         easyfind(nbdeque,7);
-        easyfind(nbdeque,2);
         easyfind(nbdeque,4545465);
     }
     catch(const std::exception &e)
