@@ -12,3 +12,20 @@
 
 #pragma once
 
+# include <map>
+
+
+class BitcoinExchange
+{
+    private:
+
+    public:
+    BitcoinExchange();
+    BitcoinExchange();
+    BitcoinExchange(const BitcoinExchange &original);
+    BitcoinExchange &operator=(const BitcoinExchange &original);
+    ~BitcoinExchange();
+
+
+
+};

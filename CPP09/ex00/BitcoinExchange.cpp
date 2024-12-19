@@ -11,3 +11,10 @@
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+
+BitcoinExchange::BitcoinExchange(){};
+
+BitcoinExchange::BitcoinExchange();
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &original);
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &original);
+BitcoinExchange::~BitcoinExchange(){};

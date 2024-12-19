@@ -10,14 +10,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = easyfind
+NAME = btc
 
 CC = c++
 
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC = main.cpp \
-
+	BitcoinExchange.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
