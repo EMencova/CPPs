@@ -25,12 +25,13 @@ typename T::iterator easyfind(T &cont, int value)
     if(it != cont.end())
     {
         std::cout<<"Value found: "<<*it<<std::endl;
+        std::cout<<"Position is: "<<std::distance(cont.begin(),it)<<std::endl;
+        std::cout<<std::endl;
     }
     else
         throw std::runtime_error("Value not found!");
     
     return (it);
 }
-
 
 #endif

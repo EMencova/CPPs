@@ -18,7 +18,7 @@
 
 int main()
 {
-    int arr[]= {1,2,3,4,5,6,7,8};
+    int arr[]= {1,4,3,4,5,6,7,8};
     std::vector<int>nbr(arr, arr + sizeof(arr)/sizeof(arr[0]));
     std::list<int>nblist(arr, arr + sizeof(arr)/sizeof(arr[0]));
     std::deque<int>nbdeque(arr, arr + 5);

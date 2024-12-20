@@ -57,10 +57,12 @@ unsigned int Span::shortestSpan() const
     std::list<int>sorted =  nums;
     sorted.sort();
     unsigned int min = UINT_MAX;;
-    for (std::list<int>::iterator it = sorted.begin(); it != sorted.end(); ++it)
+    for (std::list<int>::iterator it = sorted.begin(); it != sorted.end(); it++)
     {
         std::list<int>::iterator nextIt = it;
         nextIt++;
+        if(nextIt == sorted.end())
+            break;
         unsigned int diff = static_cast<unsigned int>(*nextIt - *it);
         if (diff < min)
             min = diff;
@@ -78,4 +80,3 @@ unsigned int Span::longestSpan() const
 
     return (max - min);
 }
-

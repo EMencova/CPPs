@@ -17,7 +17,7 @@ int main()
 {
      Span a(5);
 
-        a.addNumber(5);
+        a.addNumber(15);
         a.addNumber(35);
         a.addNumber(18);
         a.addNumber(30);
@@ -47,7 +47,7 @@ int main()
 
     try
     {
-        //a.addNumber(9);
+       // a.addNumber(9);
         std::cout<<"__________________________"<<std::endl;
         std::cout<<std::endl;
         std::cout<<"Shortest span is: "<<a.shortestSpan()<<std::endl; 
@@ -61,9 +61,11 @@ int main()
         std::cout<<"__________________________"<<std::endl;
         std::cout<<std::endl;
         std::cout<<"Adding range of numbers: "<<std::endl; 
-        Span b(5);
-        b.addRange(3,7);
+        Span b(11000);
+        b.addRange(1,10);
         b.display();
+        std::cout<<"Shortest span is: "<<b.shortestSpan()<<std::endl;
+        std::cout<<"Longest span is: "<<b.longestSpan()<<std::endl;
     }
     catch(const std::exception& e)
     {

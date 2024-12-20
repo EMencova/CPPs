@@ -25,9 +25,9 @@ class Span
     private:
         unsigned int _n;
         std::list<int>nums;
-
-    public:
         Span();
+
+    public: 
         Span(unsigned int n);
         Span(const Span &original);
         Span &operator=(const Span &original);
@@ -39,17 +39,15 @@ class Span
         unsigned int longestSpan() const;
         
         template <typename It>
+
         void addRange(It begin, It end)
         {
-            while(true)
+            while(begin != end)
             {
                 addNumber(begin);
-                if (begin == end)
-                    break;
                 begin++;
             }
         }
 };
-
 
 #endif
