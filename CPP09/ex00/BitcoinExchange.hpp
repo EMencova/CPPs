@@ -18,13 +18,16 @@
 class BitcoinExchange
 {
     private:
+        std::map<std::string, int>form;
+        std::map<
+
 
     public:
-    BitcoinExchange();
-    BitcoinExchange();
-    BitcoinExchange(const BitcoinExchange &original);
-    BitcoinExchange &operator=(const BitcoinExchange &original);
-    ~BitcoinExchange();
+        BitcoinExchange();
+        BitcoinExchange();
+        BitcoinExchange(const BitcoinExchange &original);
+        BitcoinExchange &operator=(const BitcoinExchange &original);
+        ~BitcoinExchange();
 
 
 
