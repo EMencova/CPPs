@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 16:29:03 by emencova          #+#    #+#             */
-/*   Updated: 2025/01/08 21:20:44 by eliskam          ###   ########.fr       */
+/*   Updated: 2025/01/12 09:07:45 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,22 @@
 
 BitcoinExchange::BitcoinExchange(){};
 
+
 BitcoinExchange::BitcoinExchange(std::ifstream &file, char **av)
 {
     std::ifstream data;
     data.open("data.csv", std::ifstream::in);
     get_info(data);
     _size = getSize(data) - 1;
-    _checks = new int[_size];
+   _checks = new int[_size];
     for (int i = 0; i < _size; i++)
-        _checks[i] = 0;
-    
+        _checks[i] = 0; 
     file.open(av[1], std::ifstream::in);
-    parsing(file);        
+    parsing(file);
+    file.open(av[1], std::ifstream::in);
+	printout(file);  
 }
+
 
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &original)
@@ -70,6 +73,7 @@ void BitcoinExchange::get_info(std::ifstream &file)
     file.close();  
 }
 
+
 int  BitcoinExchange::getSize(std::ifstream &file) const
 {
     int len;
@@ -80,132 +84,158 @@ int  BitcoinExchange::getSize(std::ifstream &file) const
     return (len);
 }
 
+
 void BitcoinExchange::parsing(std::ifstream &file)
 {
     std::string line;
     int i = 0;
 
-    getline(file, line);
-    while(getline(file,line))
+    if (getline(file, line)) 
     {
-        _checks[i] = 0;
-        if (!check_date)
-            _checks[i] = 1;
-        if(!check_pos)
-            _checks[i] = 2;
-        if(!check_size)
-            _checks[i] = 3;
-        i++;
+        while (getline(file, line))
+        {
+            _checks[i] = 0;
+            if (!check_date(line))
+                _checks[i] = 1;
+            i++;
+        }
     }
     file.close();
 }
 
-std::string ft_trim(const std::string &str)
+std::string ft_trim(const std::string &s)
 {
-    int one = str.find_first_not_of(' ');
-    if (std::string::npos == one)
-        return (str);
-    int last = str.find_last_not_of(' ');
-    return (str.substr(one, (last - one + 1)));  
+    size_t start = s.find_first_not_of(" \t\r\n");
+    size_t end = s.find_last_not_of(" \t\r\n");
+
+    if (start == std::string::npos || end == std::string::npos)
+        return "";
+    
+    return s.substr(start, end - start + 1);
 }
 
-bool BitcoinExchange::check_date(std::string line)
+bool BitcoinExchange::check_date(std::string date)
 {
-    std::istringstream str(line);
-    std::string date_check;
-    
+    if (date.length() != 10 || date[4] != '-' || date[7] != '-')
+        return false;
 
-    getline(str,date_check,'|');
-    date_check = ft_trim(date_check);
-    
-    std::string year = date_check.substr(0, 4);
-    std::string month = date_check.substr(5, 2);
-    std::string day = date_check.substr(8, 2);
-
-    if (std::stoi(year) > 2023 || std::stoi(month) > 12 || std::stoi(day) > 31)
+    std::string year = date.substr(0, 4);
+    std::string month = date.substr(5, 2);
+    std::string day = date.substr(8, 2);
+    if (atoi(year.c_str()) < 2009 || atoi(month.c_str()) > 12 || atoi(day.c_str()) > 31)
         return (false);
-    else
-        return (true);   
-}
 
-bool BitcoinExchange::check_pos(std::string line)
-{
-    std::istringstream str(line);
-    std::string pos_check;
-    size_t find_sign;
-    
-    getline(str,pos_check,'|');
-    getline(str,pos_check,'|');
-    find_sign = pos_check.find("-");
-    if (find_sign != std::string::npos && pos_check.find("-", find_sign + 1) != std::string::npos)
+    int day_int = atoi(day.c_str());
+    int month_int = atoi(month.c_str());
+    if (day_int < 1 || day_int > 31 || month_int < 1 || month_int > 12)
         return (false);
-    float value = atof(pos_check.c_str());
-    return (value > 0);   
+
+    return (true);
 }
 
-bool BitcoinExchange::check_size(std::string line)
-{
-    std::istringstream str(line);
-    std::string pos_check;
-    
-    getline(str, pos_check, '|');
-    getline(str, pos_check, '|');
-
-    float value = atof(pos_check.c_str());
-    return (value < static_cast<float>(__INT_MAX__));
-}
 
 void BitcoinExchange::printout(std::ifstream &file)
 {
     std::string line;
-    std::string key;
-    std::string value;
     int i = 0;
-    while(i < _size)
+
+    while (getline(file, line))
     {
-        getline(file, line);
-        std::istringstream str(line);
-        getline(str,key,'|');
-        getline(str,value,'|');
-        key = ft_trim(key);
-        value = ft_trim(value);
-        if (_checks[i] == 0)
+        if (i == 0)
         {
-            if (form[key] == 0)
-            {
-                while (form[key] == 0 && key != "Error: Year too old.")
-                    closest_date(key);
-            }
+            i++;
+            continue;
         }
-        
-        
-    }   
-}
-
-
-void BitcoinExchange::closest_date(std::string str)
-{
-    int year, month, day;
-    std::istringstream(str.substr(0, 10)) >> year >> month >> day;
-
-    if (--day < 1)
-    {
-        day = 31;
-        if (--month < 1)
+        if (line.empty())
+            continue;
+        size_t separator_pos = line.find('|');
+        if (separator_pos == std::string::npos)
         {
-            month = 12;
-            if (--year < 2010)
-            {
-                str = "Error: Year too old.";
-                return;
-            }
+            std::cout << "Error: bad input => " << line << std::endl;
+            continue;
         }
+        std::string key = ft_trim(line.substr(0, separator_pos));
+        std::string value = ft_trim(line.substr(separator_pos + 1));
+        if (key.empty() || value.empty())
+        {
+            std::cout << "Error: bad input => " << line << std::endl;
+            continue;
+        }
+        if (!check_date(key))
+        {
+            std::cout << "Error: bad input => " << key << std::endl;
+            continue;
+        }
+        double valueNum = atof(value.c_str());
+        if (valueNum < 0)
+        {
+            std::cout << "Error: not a positive number." << std::endl;
+            continue;
+        }
+        if (valueNum > 2147483647)
+        {
+            std::cout << "Error: too large a number." << std::endl;
+            continue;
+        }
+
+        float rate = 0;
+        if (!closest_date(key, rate))
+        {
+            std::cout << "Error: closest date not found for => " << key << std::endl;
+            continue;
+        }
+        std::cout << key << " => " << value << " = " << valueNum * rate << std::endl;
     }
-    std::string yearStr = std::to_string(year);
-    std::string monthStr = (month < 10 ? "0" : "") + std::to_string(month);
-    std::string dayStr = (day < 10 ? "0" : "") + std::to_string(day);
-
-    str = yearStr + "-" + monthStr + "-" + dayStr;
 }
 
+int ft_stoi(const std::string &str)
+{
+    int result = 0;
+    bool negative = false;
+    size_t i = 0;
 
+    if (str[i] == '-')
+    {
+        negative = true;
+        ++i;
+    }
+
+    for (; i < str.length(); ++i)
+    {
+        char c = str[i];
+        if (c < '0' || c > '9') 
+            throw std::invalid_argument("Invalid character in number");
+        result = result * 10 + (c - '0');
+    }
+
+    return negative ? -result : result;
+}
+
+bool BitcoinExchange::closest_date(std::string &str, float &rate)
+{
+    int error = 0;
+    int year, month, day;
+
+    try
+    {
+        year = ft_stoi(str.substr(0, 4));
+        month = ft_stoi(str.substr(5, 2));
+        day = ft_stoi(str.substr(8, 2));
+    }
+    catch (const std::exception &e)
+    {
+        error = 1;
+    }
+
+    if (error || month < 1 || month > 12 || day < 1 || day > 31 || year < 2009)
+        return (false);
+    std::map<std::string, float>::iterator it = form.lower_bound(str);
+    if (it == form.end() || it->first != str)
+    {
+        if (it == form.begin())
+            return false;
+        --it;
+    }
+    rate = it->second;
+    return (true);
+}

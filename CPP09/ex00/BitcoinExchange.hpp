@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 16:29:00 by emencova          #+#    #+#             */
-/*   Updated: 2025/01/08 21:15:31 by eliskam          ###   ########.fr       */
+/*   Updated: 2025/01/12 09:11:19 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 # include <map>
 # include <iostream>
 # include <fstream>
-# include <string>
+# include <cstring>
 # include <sstream>
+# include <cstdlib>
+# include <climits>
 
 
 class BitcoinExchange
@@ -30,10 +32,8 @@ class BitcoinExchange
         int  getSize(std::ifstream &file) const;
         void parsing(std::ifstream &file);
         bool check_date(std::string line);
-        bool check_pos(std::string line);
-        bool check_size(std::string line);
         void printout(std::ifstream &file);
-        void closest_date(std::string str);
+        bool closest_date(std::string &str, float &rate);
         
     public:
         BitcoinExchange();
