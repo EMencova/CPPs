@@ -6,38 +6,63 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 15:32:46 by emencova          #+#    #+#             */
-/*   Updated: 2025/01/12 20:53:13 by eliskam          ###   ########.fr       */
+/*   Updated: 2025/01/14 20:49:31 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-Merge::Merge()
-{  
-}
-Merge::Merge(char *str)
+Merge::Merge(){}
+ 
+Merge::Merge(char **str, int count)
 {
-    int i = 0; 
-    while (array[i] != '\0')
+    _size = count;
+    _array = new int[_size];
+
+    for (int i = 0; i < _size; ++i)
     {
-        _size++;
-        i++;
+        for (int j = 0; str[i][j] != '\0'; ++j)
+        {
+            if (!std::isdigit(str[i][j]))
+            {
+                std::cerr << "Error: only numbers allowed: " << str[i] << std::endl;
+                delete[] _array;
+                exit(1);
+            }
+        }
+        _array[i] = std::atoi(str[i]);
+        if (_array[i] <= 0)
+        {
+            std::cerr << "Error: numbers must be positive: " << str[i] << std::endl;
+            delete[] _array;
+            exit(1);
+        }
+        for (int j = 0; j < i; ++j)
+        {
+            if (_array[i] == _array[j])
+            {
+                std::cerr << "Error: duplicate number found: " << _array[i] << std::endl;
+                delete[] _array;
+                exit(1);
+            }
+        }
     }
-    int *array = std::atoi(str.c_str());
-    vsplit_add(array, _size);
-            
+    vsplit_add_one(_array);
 }
 
+
 Merge::~Merge()
-{   
+{
+    delete[] _array;
 }
+
 Merge::Merge(const Merge &original)
 {
     _size = original._size;
     v = original.v;
-    d = original.d;
-    
+    d = original.d;    
 }
+
 Merge &Merge::operator=(const Merge &original)
 {
     if(this != &original)
@@ -49,9 +74,30 @@ Merge &Merge::operator=(const Merge &original)
     return (*this);
 }
 
-void Merge::vsplit_add(int *array, int len)
+void Merge::vsplit_add_one(int *array)
 {
-    std::vector<std::pair<int,int> >v;
+    int left[_size/2 + 1];
+    int right[_size/2];
+    
+    for (int i = 0; i < _size; i+=2)
+    {
+        left[i] = array[i];
+        right[i] = array[i + 1];      
+        v.push_back(std::make_pair(left[i],right[i]));
+    }
+    swap_pair();
+    for (std::vector<std::pair<int, int> >::iterator it = v.begin(); it != v.end(); ++it)
+       std::cout << "(" << it->first << ", " << it->second << ")" << std::endl;
+
+    for (std::vector<std::pair<int, int> >::iterator it = v.begin(); it != v.end(); ++it)
+    {
+        v.push_back(std::make_pair<pair())
+    } 
+    
+}
+
+/*
+{
     int len_left = 0;
     
     if (len % 2 == 0)
@@ -101,15 +147,17 @@ void Merge::vsplit_add(int *array, int len)
   //      std::cout << "(" << it->first << ", " << it->second << ")" << std::endl;
       
 }
+*/
 
-int stringToInt(const std::string &str)
+void Merge::swap_pair()
 {
-    if (str.empty())
+    for (std::vector<std::pair<int, int> >::iterator it = v.begin(); it != v.end(); ++it)
     {
-        std::cerr << "Error: Cannot convert an empty string to an integer." << std::endl;
-        return (0;
+        if (it->first > it->second)
+        {
+            int temp = it->first;
+            it->first = it->second;
+            it->second = temp;
+        }
     }
-    int res = std::atoi(str.c_str());
-
-    return (res);
 }
