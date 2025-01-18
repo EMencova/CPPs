@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 15:32:46 by emencova          #+#    #+#             */
-/*   Updated: 2025/01/14 20:49:31 by eliskam          ###   ########.fr       */
+/*   Updated: 2025/01/18 12:37:26 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ Merge::Merge(char **str, int count)
             }
         }
     }
-    vsplit_add_one(_array);
+    _varray_len = contain_array_len();
+    vsplit_add(_array);
 }
 
 
@@ -74,90 +75,111 @@ Merge &Merge::operator=(const Merge &original)
     return (*this);
 }
 
-void Merge::vsplit_add_one(int *array)
+void Merge::vsplit_add(int *array)
 {
-    int left[_size/2 + 1];
-    int right[_size/2];
-    
-    for (int i = 0; i < _size; i+=2)
-    {
-        left[i] = array[i];
-        right[i] = array[i + 1];      
-        v.push_back(std::make_pair(left[i],right[i]));
-    }
-    swap_pair();
-    for (std::vector<std::pair<int, int> >::iterator it = v.begin(); it != v.end(); ++it)
-       std::cout << "(" << it->first << ", " << it->second << ")" << std::endl;
+    int *left = new int[_size / 2 + 1];
+    int *right = new int[_size / 2 + 1];
 
+    for (int i = 0; i < _size; i += 2)
+    {
+        left[i / 2] = array[i];
+        if (i + 1 < _size)
+            right[i / 2] = array[i + 1];
+        else
+            right[i / 2] = 0;
+        v.push_back(std::make_pair(left[i / 2], right[i / 2]));
+        v_original.push_back(std::make_pair(left[i / 2], right[i / 2]));
+    }
+    swap_pair(v);
+    swap_pair(v_original);
+
+    //PRINTING ONLY----------------------------------------
     for (std::vector<std::pair<int, int> >::iterator it = v.begin(); it != v.end(); ++it)
     {
-        v.push_back(std::make_pair<pair())
-    } 
-    
+        std::cout << "(" << it->first << ", " << it->second << ")" << std::endl;
+    }
+    //-----------------------------------------------------------------
+    merge_pairs();
+    delete[] left;
+    delete[] right;
 }
 
-/*
+
+int Merge::contain_array_len()
 {
-    int len_left = 0;
-    
-    if (len % 2 == 0)
-        len_left = len / 2;
-    else if (len % 2 == 1)
-        len_left = len / 2 + 1;
+    int i = _size;
+    int x = 0;
+
+    if (_size <= 2)
+        return (1);
         
-    int len_right = len / 2;
-    int right[len_right];
-    int left[len_left];
-
-    for(int i = 0; i < len_left; i++)
+    while (i > 2)
     {
-        std::cout<<"loop left len"<<std::endl;
-        std::cout<<array[i]<<std::endl;
-        left[i] = array[i];
-    }
-    int i = len_left;
-    int j = 0;
-    while (i < len)
-    {
-        std::cout<<"loop right len"<<std::endl;
-        std::cout<<array[i]<<std::endl;
-        right[j] = array[i];
-        j++;
-        i++;
-    }
-    for(int i = 0; i < len_left; i++)
-        std::cout<<"left array: "<<left[i]<<std::endl;
-
-    for(int i = 0; i < len_right; i++)
-        std::cout<<"right array: "<<right[i]<<std::endl;
-    if (len % 2 == 1)
-    {
-        right[len_left -1]=left[len_left -1];
-    }    
-    for (int i = 0; i < len_left; i++)
-    {
-        std::cout<<"left"<<std::endl;
-        std::cout<<left[i]<<std::endl;
-        std::cout<<"right"<<std::endl;
-        std::cout<<right[i]<<std::endl;
-        v.push_back(std::make_pair(left[i],right[i]));
-    }
-
-  //  for (std::vector<std::pair<int, int> >::iterator it = v.begin(); it != v.end(); ++it)
-  //      std::cout << "(" << it->first << ", " << it->second << ")" << std::endl;
-      
+        if (i % 2 == 0)
+            i /= 2;
+        else
+            i = (i / 2) + 1;
+        x++;
+    }  
+    std::cout << "Calculated _varray_len: " << x << std::endl;
+    return (x); 
 }
-*/
 
-void Merge::swap_pair()
-{
-    for (std::vector<std::pair<int, int> >::iterator it = v.begin(); it != v.end(); ++it)
+void Merge::swap_pair(std::vector<std::pair<int, int> > &vec)
+{ 
+    for (std::vector<std::pair<int, int> >::iterator it = vec.begin(); it != vec.end(); ++it)
     {
         if (it->first > it->second)
-        {
-            int temp = it->first;
-            it->first = it->second;
-            it->second = temp;
-        }
+            std::swap(it->first, it->second);
     }
 }
+
+void Merge::merge_pairs()
+{
+    std::vector<std::pair<int, int> > *array_vector = new std::vector<std::pair<int, int> >[_varray_len];
+    
+    array_vector[0] = v;
+        
+    for (int level = 1; level < _varray_len; ++level)
+    {
+        if (array_vector[level-1].size() < 2)
+            break;
+
+        std::vector<std::pair<int, int> > current;
+
+        for (size_t i = 0; i < array_vector[level - 1].size(); i += 2)
+        {
+            if (i + 1 < array_vector[level - 1].size())
+            {
+                std::pair<int, int> first = array_vector[level - 1][i];
+                std::pair<int, int> second = array_vector[level - 1][i + 1];
+                current.push_back(std::make_pair(first.second, second.second));
+            }
+            else
+            {
+                current.push_back(array_vector[level - 1][i]);
+            }
+        }
+
+        swap_pair(current);
+        array_vector[level] = current;
+    }
+
+    ////// PRINTING ONLY-------------------------------------------------------
+    for (int level = 0; level < _varray_len; ++level)
+    {
+        if (array_vector[level].empty()) break;
+
+        std::cout << "Level " << level << ": ";
+        for (size_t i = 0; i < array_vector[level].size(); ++i)
+            std::cout << "(" << array_vector[level][i].first << ", " << array_vector[level][i].second << ") ";
+        std::cout << std::endl;
+    }
+   // ----------------------------------------------------------------------
+    delete[] array_vector;
+}
+
+
+
+
+
