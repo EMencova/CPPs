@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 15:32:46 by emencova          #+#    #+#             */
-/*   Updated: 2025/01/18 12:37:26 by eliskam          ###   ########.fr       */
+/*   Updated: 2025/01/19 18:53:53 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int Merge::contain_array_len()
     if (_size <= 2)
         return (1);
         
-    while (i > 2)
+    while (i > 1)
     {
         if (i % 2 == 0)
             i /= 2;
@@ -136,6 +136,7 @@ void Merge::swap_pair(std::vector<std::pair<int, int> > &vec)
 
 void Merge::merge_pairs()
 {
+    ///PAIRS UP ALL UNTIL ONLY 2 LEFT, ALWAYS PAIRS WITH RIGHT(BIGGER NUMBER), saving all pairs in array_vector[i]
     std::vector<std::pair<int, int> > *array_vector = new std::vector<std::pair<int, int> >[_varray_len];
     
     array_vector[0] = v;
@@ -159,9 +160,10 @@ void Merge::merge_pairs()
             {
                 current.push_back(array_vector[level - 1][i]);
             }
+            swap_pair(current);
         }
 
-        swap_pair(current);
+       // swap_pair(current);
         array_vector[level] = current;
     }
 
@@ -175,9 +177,120 @@ void Merge::merge_pairs()
             std::cout << "(" << array_vector[level][i].first << ", " << array_vector[level][i].second << ") ";
         std::cout << std::endl;
     }
-   // ----------------------------------------------------------------------
-    delete[] array_vector;
+
+   //WORKS BUT REVERSED- PAIRING BACK WITH THE NUMBERS FROM PREVIOUS LEVEL
+   std::vector<std::pair<int, int> > temp;
+
+    for (int level = _varray_len - 1; level > 0; --level)
+    {
+        for (size_t i = 0; i < array_vector[level].size(); ++i)
+        {
+            const std::pair<int, int> &pair = array_vector[level][i];
+            bool found = false;
+            for (size_t j = 0; j < temp.size(); ++j)
+            {
+                if (temp[j] == pair)
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+                temp.push_back(pair);
+        }
+        std::vector<std::pair<int, int> > next_level;
+        for (size_t i = 0; i < array_vector[level - 1].size(); ++i)
+        {
+            const std::pair<int, int> &pair = array_vector[level - 1][i];
+            bool found = false;
+            for (size_t j = 0; j < temp.size(); ++j)
+            {
+                if (temp[j] == pair)
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+                next_level.push_back(pair);
+        }
+        array_vector[level - 1] = next_level;
+
+        //PRINTING ONLY-----------------------
+        std::cout << "The updated vector for Level " << (level - 1) << ": ";
+        for (size_t i = 0; i < array_vector[level - 1].size(); ++i)
+            std::cout << "(" << array_vector[level - 1][i].first << ", " << array_vector[level - 1][i].second << ") "<<std::endl;
+        //------------------------------------------
+        temp.clear();
+        temp = next_level;
+    }
+
+
+
+
+    std::vector<std::pair<int, int> > temp_one;
+    std::pair<int, int> zero_pair;
+    bool contains_zero = false;
+
+    for (int i = temp.size() - 1; i >= 0; --i)
+    {
+        const std::pair<int, int>& current_pair = temp[i];
+        if (current_pair.first == 0 || current_pair.second == 0)
+        {
+            zero_pair = current_pair;
+            contains_zero = true;
+        }
+        else
+        temp_one.push_back(current_pair);
+    }
+    if (contains_zero)
+        temp_one.push_back(zero_pair);
+    v = temp_one;
+
+    //std::swap(v[0], v[1]);
+
+// PRINTING ONLY---------------------------------------
+    std::cout << "V is now: " << std::endl;
+    for (size_t i = 0; i < v.size(); ++i)
+        std::cout << "(" << v[i].first << ", " << v[i].second << ") " << std::endl;
+//----------------------------------------------
+     
+   //delete[] array_vector;
+   insert();
+
 }
+
+void Merge::insert()
+{
+    vmerged.push_back(v[0].first);
+    vmerged.push_back(v[0].second);
+
+    for (int i = 0; i < 2; i++)
+    {
+        std::cout<<"inside vmerged: "<<std::endl;
+        std::cout<<vmerged[i]<<std::endl;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
