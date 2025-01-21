@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 15:32:46 by emencova          #+#    #+#             */
-/*   Updated: 2025/01/21 04:48:31 by eliskam          ###   ########.fr       */
+/*   Updated: 2025/01/21 04:53:27 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,15 @@ void Merge::vsplit_add(int *array)
 {
     int *left = new int[_size / 2];
     int *right = new int[_size / 2];
+    int tempsize = _size;
 
     if (_size % 2 == 1)
     {
         _last = array[_size];
-        _size -= 1;
+        tempsize -= 1;
     }
 
-    for (int i = 0; i < _size; i += 2)
+    for (int i = 0; i < tempsize; i += 2)
     {
         left[i / 2] = array[i];
         if (i + 1 < _size)
