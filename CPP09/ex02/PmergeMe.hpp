@@ -6,7 +6,7 @@
 /*   By: eliskam <eliskam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 15:32:46 by emencova          #+#    #+#             */
-/*   Updated: 2025/01/19 17:28:56 by eliskam          ###   ########.fr       */
+/*   Updated: 2025/01/21 04:49:02 by eliskam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ class Merge
 {
     private:
     std::vector<std::pair<int,int> >v;
-    std::vector<std::pair<int,int> >v_original;
     std::vector<std::pair<int, int> > *array_vector;
     std::vector<int> vmerged;
 
@@ -33,6 +32,7 @@ class Merge
     int _size;
     int *_array;
     int _varray_len;
+    int _last;
 
     public:
     Merge();
